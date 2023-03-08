@@ -15,7 +15,7 @@ export class HelperMyAccountComponent implements OnInit {
   @Input() user: User;
 
   myQrCode: boolean = false;
-  imgUrl = './assets/myAcc1.png';
+  imgUrl = 'https://loremflickr.com/320/240/face';
   currentUser: any
   qrData: any
 
