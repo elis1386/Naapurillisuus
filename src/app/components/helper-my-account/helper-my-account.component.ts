@@ -15,9 +15,10 @@ export class HelperMyAccountComponent implements OnInit {
   @Input() user: User;
 
   myQrCode: boolean = false;
-  imgUrl = 'https://loremflickr.com/320/240/face';
-  currentUser: any
-  qrData: any
+  imgUrl = "https://source.unsplash.com/random/?user,face/300x202"
+
+  currentUser: any;
+  qrData: any;
 
   constructor(
     private router: Router,
@@ -30,12 +31,12 @@ export class HelperMyAccountComponent implements OnInit {
     let loggedUser = JSON.parse(localStorage.getItem('user')!);
     this.userDataService.getAllUserData().subscribe((users) => {
       users.forEach((user) => {
-       if(user.uid === loggedUser['uid']){
-       console.log(user);
-       this.currentUser = user
-       this.qrData = `${user.firstName} ${user.lastName } ${user.role}`
-       }
-       return this.currentUser
+        if (user.uid === loggedUser['uid']) {
+          console.log(user);
+          this.currentUser = user;
+          this.qrData = `${user.firstName} ${user.lastName} ${user.role}`;
+        }
+        return this.currentUser;
       });
       console.log(this.currentUser);
     });
@@ -43,4 +44,5 @@ export class HelperMyAccountComponent implements OnInit {
   askHelp() {
     this.router.navigate(['client-task-form']);
   }
+
 }

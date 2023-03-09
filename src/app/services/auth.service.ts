@@ -3,6 +3,7 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
 import { User } from '../models/users';
+import firebase from 'firebase/compat/app'
 
 @Injectable({
   providedIn: 'root',
@@ -17,8 +18,6 @@ export class AuthService {
 
   constructor(private router: Router, private afAuth: AngularFireAuth, public afs: AngularFirestore) {
     this.afAuth.authState.subscribe((user)=> {
-      this.userLoggedIn = false;
-
       this.userLoggedIn = false;
       if(user) {
         this.userData = user;
@@ -50,9 +49,6 @@ export class AuthService {
   signUpUser(user: any): Promise<any>{
     return this.afAuth.createUserWithEmailAndPassword(user.email, user.password)
     .then((result) => { 
-      if (user.role === "client") {
-        
-      }
       let emailLower = user.email.toLowerCase();
       result.user?.sendEmailVerification();
         const userModel: User = {
@@ -85,6 +81,9 @@ export class AuthService {
       .signInWithEmailAndPassword(email, password)
       .then(() => {
         console.log('Auth service: loginUser: success');
+        this.getUserData().then(()=>{
+          this.routing();
+        })
       })
       .catch((error) => {
         console.log('Auth service: login error...');
@@ -100,6 +99,35 @@ export class AuthService {
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(
       `users/${user.uid}`
     );
-    return this.userRef.add(user);
+    return userRef.set(user);
+  }
+
+  getUserData(){
+    return firebase.firestore().collection('users').doc(firebase.auth().currentUser?.uid).get()
+    .then((doc)=>{
+      if (doc.exists){
+        console.log(doc.data())
+        this.user = doc.data();
+      }
+    })
+    .catch((error) => {
+      console.log("Error getting document:", error);
+    });
+  }
+
+  isVolunteer(){
+    return this.user.role === 'volunteer'
+  }
+
+  isClient(){
+    return this.user.role === 'client'
+  }
+
+  routing(){
+      if(this.isVolunteer()){
+        this.router.navigate(['/helper-dashboard']);
+      }else if(this.isClient()){
+        this.router.navigate(['/client-task-form']);
+      }
   }
 }

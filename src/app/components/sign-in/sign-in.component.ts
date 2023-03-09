@@ -29,7 +29,6 @@ export class SignInComponent {
       this.authService.loginUser(this.loginForm.value.email, this.loginForm.value.password).then((result) => {
         if(result == null){
           console.log('login into...');
-          this.router.navigate(['/helper-dashboard']);
         }
         else if(result.isValid == false){
           console.log('page reloaded')
