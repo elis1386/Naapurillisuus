@@ -72,7 +72,7 @@ import { VolunteerCardFClientComponent } from './components/volunteer-card-f-cli
     FormsModule,
     ReactiveFormsModule,
     QRCodeModule,
-    
+    FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),

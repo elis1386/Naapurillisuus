@@ -1,7 +1,5 @@
 <section class="container">
   <section class="task-form">
-    <!-- Personal info and address -->
-
     <article class="personalinfo">
       <p><strong>Your Information</strong></p>
       <p>
@@ -19,8 +17,8 @@
       <a href="">Edit Information</a>
     </article>
 
-    <!-- Type of help choice -->
-    <form [formGroup]="addTaskForm" (ngSubmit)="addToClientTask()">
+    <!-- task form -->
+    <form [formGroup]="addTaskForm" (ngSubmit)="addClientTask()">
       <article class="my-3 helptype col-6">
         <p>Type of help:</p>
         <select class="form-select" required="" formControlName="helpType">
@@ -30,40 +28,76 @@
           <option>Not satisfied with help</option>
           <option>Having problems with a volunteer</option>
           <option>Other</option>
-          </select>
+        </select>
+        <p
+        *ngIf="
+          this.addTaskForm.get('helpType')?.invalid &&
+          this.addTaskForm.get('helpType')?.touched
+        "
+      >
+        <small class="text-danger"
+          >Choose the problem type, this is required</small
+        >
+      </p>
       </article>
 
-      
       <article class="col-6 my-3 helptype">
         <p>Enter period:</p>
-    
+
         <select class="form-select" required="" formControlName="period">
           <option value="">Choose suitable period</option>
           <option>from 9 to 12</option>
           <option>from 12 to 15</option>
           <option>from 15 to 18</option>
           <option>Other</option>
-          </select>
+        </select>
+        <p
+        *ngIf="
+          this.addTaskForm.get('period')?.invalid &&
+          this.addTaskForm.get('period')?.touched
+        "
+      >
+        <small class="text-danger"
+          >Choose the problem type, this is required</small
+        >
+      </p>
       </article>
 
-      <!-- Comments anfd emergency tag -->
-
       <section class="comment">
-        <h6>Comments:</h6>
-        <textarea
-          class="form-control"
-          placeholder="Leave your comment here"
-          id="floatingTextarea2"
-          style="height: 100px"
-          formControlName="comments"
-        ></textarea>
+        <article>
+          <h6>Comments:</h6>
+          <textarea
+            class="form-control"
+            placeholder="Leave your comment here"
+            id="floatingTextarea2"
+            style="height: 100px"
+            formControlName="comments"
+          >
+          comments
+        </textarea>
+        <p
+        *ngIf="
+          this.addTaskForm.get('comments')?.invalid &&
+          this.addTaskForm.get('comments')?.touched
+        "
+      >
+        <small class="text-danger"
+          >Choose the problem type, this is required</small
+        >
+      </p>
+        </article>
+       
         <div class="mt-2 form-check">
-          <input type="checkbox" class="form-check-input" checked="" formControlName="isUrgent"/>
+          <input
+            type="checkbox"
+            class="form-check-input"
+            checked=""
+            formControlName="isUrgent"
+          />
           <label class="form-check-label">Emergency</label>
         </div>
       </section>
-
-      <button type="button" class="btn save_btn">Send my request</button>
+      <button class="btn save_btn" type="submit">Send my request</button>
     </form>
   </section>
 </section>
