@@ -23,8 +23,6 @@ export class HelperMyAccountComponent implements OnInit {
   constructor(
     private router: Router,
     public userDataService: UserDataService,
-    private db: AngularFirestore,
-    private afAuth: AngularFireAuth
   ) {}
 
   ngOnInit(): void {

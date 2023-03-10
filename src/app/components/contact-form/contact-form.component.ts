@@ -32,9 +32,6 @@ export class ContactFormComponent implements OnInit {
   title: string = 'Thanks for your submission.';
 
   constructor(
-    private firestore: Firestore,
-    private afs: AngularFirestore,
-    private db: AngularFirestore,
     public contactUsService: ContactUsService,
     public modalService: ModalService
   ) {}
@@ -51,7 +48,7 @@ export class ContactFormComponent implements OnInit {
     if (this.contactUsForm.invalid) {
       return this.contactUsForm.markAllAsTouched();
     }
-    this.contactUsService.sendcontactUsForm(this.contactUsForm.value);
+    this.contactUsService.sendData(this.contactUsForm.value);
     this.contactUsForm.reset();
     this.modalService.open();
   }

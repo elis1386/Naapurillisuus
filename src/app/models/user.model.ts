@@ -10,5 +10,4 @@ export interface UserModel{
     about: string,
     role: string,
     phone?: string,
-    helps: string,
 }

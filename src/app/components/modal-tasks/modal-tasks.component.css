@@ -11,7 +11,7 @@ section::backdrop{
   background-color: white;
   margin: 1rem;
   padding: 1rem;
-  border: 1px solid rgb(160, 157, 157);
+  border: 1px solid rgb(203, 202, 202);
 }
 .modal-title {
   font-size: 1.2rem;
