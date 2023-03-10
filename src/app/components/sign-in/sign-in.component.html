@@ -1,5 +1,5 @@
 <body class="signInForm text-center" cz-shortcut-listen="true">
-  <main class="form-signin w-100 m-1 mt-4">
+  <main class="m-1 mt-4">
     <form [formGroup]="loginForm" (ngSubmit)="login()">
       <h1 class="h3 mb-3 fw-normal">Please enter login and password</h1>
       <div class="info form-floating">
@@ -23,6 +23,13 @@
           autocomplete="off"
         />
         <label for="floatingPassword">Password</label>
+        <p
+        *ngIf="
+        this.firebaseErrorMessage 
+        "
+      >
+        <small class="text-danger">login or password is incorrect, please try again.</small>
+      </p>
       </div>
 
       <div class="checkbox mb-3">

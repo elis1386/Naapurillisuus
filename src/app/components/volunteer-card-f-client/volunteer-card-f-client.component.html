@@ -1,0 +1,41 @@
+<main class="container">
+    <section class="my_account d-flex justify-content-between flex-wrap  mb-4">
+        <article class="me-4">
+          <img
+            [src]="imgUrl"
+            alt="Generic placeholder image"
+            class="card-img col"
+          />
+        </article>
+        <section class="col d-flex flex-column justify-content-between gap-1">
+          <h5 class="mb-1">Elizaveta Pashkovskaya</h5>
+          <div>
+            <p class="mb-2 pb-1" style="color: #2b2a2a; font-size: 0.9rem">
+              Some information about the person which was accepted after
+              registration. It might be information about him or his hobbies or
+              something else.
+            </p>
+          </div>
+          <div class="mt-2">
+            <button
+              type="button"
+              class="btn btnShow_id"
+              (click)="myQrCode = !myQrCode"
+            >
+            {{myQrCode ? 'Hide' : 'Show'}} QR code
+            </button>
+          </div>
+        </section>
+       <!-- The QR code should be moved to modal -->
+          <!-- 
+        <div class="qr" *ngIf="myQrCode">
+          <h5 class="text-qr">Volunteer QR Code:</h5>
+          <qrcode
+            [qrdata]="'Elizaveta Pashkovskaya volunteer from Naapuriliisuus'"
+            [width]="150"
+            [errorCorrectionLevel]="'M'"
+            >{{ myQrCode ? "Hide" : "Show" }}</qrcode
+          >
+        </div> -->
+      </section>
+    </main>

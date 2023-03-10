@@ -35,7 +35,6 @@ const routes: Routes = [
   { path: 'client-tasks/done', component: ClientDoneComponent},
 
 
-
 ];
 
 @NgModule({

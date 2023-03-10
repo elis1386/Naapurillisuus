@@ -3,44 +3,67 @@
     padding: 0;
     margin: 0 auto;
 }
-.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active{
-    background-color: var(--background)
-  }
 
 .client_tasks, .donetasks {
     margin: 2rem;
     padding: 0;
 }
 
-.helpPC {
-    color: black;
-    background-color: var(--others);
-}
-
-.shopping {
-    color: black;
+.urgently {
+    color: var(--brown);
+    background-color: var(--emergency);
+  }
+  .shopping {
+    color: var(--brown);
     background-color: var(--shopping);
-}
-
-.walkpet {
-    color: #000;
+  }
+  .pets {
+    color: var(--brown);
     background-color: var(--pets);
-}
+  }
+  .other {
+    color: var(--brown);
+    background-color: var(--others);
+  }
+  .disabled {
+    color: var(--brown);
+    background-color: #dddddd;
+  }
 
-.progressbar{
-    color: #6a6a6a;
-    padding: 1rem;
-}
 .accordion-button{
     padding: 1.8rem;
 }
-/* .accordion-item, .accordion-button.collapsed{
-    color: black;
-    background-color: #dddddd;
-} */
+
+.btn {
+  background-color: var(--main-client);
+  border: var(--main-client);
+  color: white;
+  margin-top: 1rem;
+  padding: 0.5em;
+}
+.btn:hover {
+  background-color: white;
+  border: 1px solid var(--main-client);
+  color: var(--main-client);
+}
 
 @media only screen and (max-width: 425px) {
     .client_tasks{
         margin: 1rem;
     }
 }
+
+@media only screen and (max-width: 425px) {
+    .donetasks,
+    .client_tasks {
+      margin: 0.5em;
+    }
+
+  }
+  @media only screen and (max-width: 320px) {
+    .donetasks,
+    .client_tasks {
+      margin: 0.5em;
+    }
+   
+  }

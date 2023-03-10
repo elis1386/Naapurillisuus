@@ -1,0 +1,30 @@
+.btn-send {
+  font-size: 1rem;
+  color: var(--brown);
+  background-color: #ffd453;
+  width: 20%;
+}
+
+.actions {
+  text-decoration: none;
+}
+
+@media only screen and (max-width: 425px) {
+  .btn-send {
+    width: 80%;
+    margin: auto;
+  }
+  .btnShow_id {
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 320px) {
+  .btn-send,
+  .btn-take {
+    font-size: 0.8em;
+  }
+  .btn-send {
+    width: 80%;
+    margin: auto;
+  }
+}

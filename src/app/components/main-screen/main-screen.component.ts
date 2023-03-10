@@ -1,5 +1,4 @@
 import { Component, OnInit} from '@angular/core';
-import { HelperFormService } from '../../services/helper-form.service';
 
 
 
@@ -11,7 +10,7 @@ import { HelperFormService } from '../../services/helper-form.service';
 
 export class MainScreenComponent  implements OnInit{
 
-  constructor(public helperformService: HelperFormService){}
+  constructor(){}
 
 
   ngOnInit(): void {

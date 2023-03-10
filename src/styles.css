@@ -13,8 +13,11 @@
  --clients-btns:#dad3fe;
  /* tasks */
  --emergency: #fee7f8;
- --shopping: #ecfdeb;  /* #bccca3 */
+ --shopping: #e2fbe1;  /* #bccca3 */
  --pets: #fef8ea;  /* #f8c8ba */
  --others: #eaf4fd;
 
+
+ /* badge */
+ --in-progress: #1e8f07;
 }

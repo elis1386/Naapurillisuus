@@ -92,6 +92,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "Naapurillisuus:build:production",
+            "firebaseProject": "naapurillisuus-48a5b",
+            "firebaseHostingSite": "naapurillisuus-48a5b"
+          }
         }
       }
     }

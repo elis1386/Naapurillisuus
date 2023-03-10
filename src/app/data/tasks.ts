@@ -6,7 +6,7 @@ export const tasks: VTask[] = [
     id: 1,
     category: 'Urgent',
     title: 'Urgent',
-    date: new Date(Date.now()).toISOString().slice(0, 19).replace('T', ' '),
+    date: new Date(Date.now()).toISOString().slice(0, 11).replace('T', ' '),
     description:
       'I feel myself bad and reely need to ask for helping me with my lovly dog. It needs to go for a walk from 9am for 15 min, and evening time from 7pm for 20 min. Please if someone can help me with it I-ll reely appriciate it.',
     period: 9,

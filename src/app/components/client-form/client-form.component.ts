@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { throwError } from 'rxjs';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-client-form',
@@ -9,6 +13,13 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class ClientFormComponent {
   signUpForm: FormGroup;
   firebaseErrorMessage: string;
+
+  constructor(
+    private afAuth: AngularFireAuth,
+    private authService: AuthService,
+    private router: Router,
+    
+  ) {}
 
   ngOnInit(): void {
     this.signUpForm = new FormGroup({
@@ -22,6 +33,9 @@ export class ClientFormComponent {
       'address': new FormControl('', [Validators.required]),
       'city': new FormControl('', [Validators.required]),
       'zip': new FormControl('', [Validators.required]),
+      'phone': new FormControl(''),
+      'role': new FormControl('client'),
+      'about': new FormControl(null),
     });
   }
 
@@ -29,5 +43,15 @@ export class ClientFormComponent {
     if (this.signUpForm.invalid) {
       this.signUpForm.markAllAsTouched()
     }
+
+    this.authService
+      .signUpUser(this.signUpForm.value)
+      .then((result) => {
+        if (result == null) {
+          this.router.navigate(['client-task-form']);
+        }
+        return throwError(() =>  new Error('Failed login')); 
+      })
+      .catch(() => {});
   }
 }

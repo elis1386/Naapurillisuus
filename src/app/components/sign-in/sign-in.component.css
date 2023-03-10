@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@300;400&display=swap");
+
 .signInForm {
-  font-size: 62, 5%;
+  font-size: 62,5%;
   font-family: "Source serif Pro";
   margin: 0 auto;
   padding: 0;
@@ -38,9 +39,17 @@
   background-color: white;
   border: var(--main-color) 2px solid;
 }
+@media only screen and (max-width: 768px) {
+  .signInForm {
+    width: 60%;
+  }
+}
 
 @media only screen and (max-width: 425px) {
   .signInForm {
     width: 90%;
+  }
+  .banklogin{
+    font-size: 1rem;
   }
 }

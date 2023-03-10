@@ -7,7 +7,7 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent {
-  imgUrl = './assets/logotip.png';
+  imgUrl = 'assets/logotip.png';
   constructor(public afAuth: AngularFireAuth) {}
 
   logout(): void {

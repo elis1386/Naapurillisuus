@@ -1,6 +1,69 @@
 <section class="container">
-    <section class="task-form">
-  
-    </section>
-  
+  <section class="task-form">
+    <!-- Personal info and address -->
+
+    <article class="personalinfo">
+      <p><strong>Your Information</strong></p>
+      <p>
+        {{ currentClient.firstName }} <br />
+        {{ currentClient.lastName }}
+      </p>
+      <a href="">Edit Information</a>
+    </article>
+    <article class="address">
+      <p><strong>Your Address</strong></p>
+      <p>
+        {{ currentClient.zip }} <br />
+        {{ currentClient.city }}, {{ currentClient.address }}
+      </p>
+      <a href="">Edit Information</a>
+    </article>
+
+    <!-- Type of help choice -->
+    <form [formGroup]="addTaskForm" (ngSubmit)="addToClientTask()">
+      <article class="my-3 helptype col-6">
+        <p>Type of help:</p>
+        <select class="form-select" required="" formControlName="helpType">
+          <option value="">Choose...</option>
+          <option>Can't make an order</option>
+          <option>Can't make an order by phone</option>
+          <option>Not satisfied with help</option>
+          <option>Having problems with a volunteer</option>
+          <option>Other</option>
+          </select>
+      </article>
+
+      
+      <article class="col-6 my-3 helptype">
+        <p>Enter period:</p>
+    
+        <select class="form-select" required="" formControlName="period">
+          <option value="">Choose suitable period</option>
+          <option>from 9 to 12</option>
+          <option>from 12 to 15</option>
+          <option>from 15 to 18</option>
+          <option>Other</option>
+          </select>
+      </article>
+
+      <!-- Comments anfd emergency tag -->
+
+      <section class="comment">
+        <h6>Comments:</h6>
+        <textarea
+          class="form-control"
+          placeholder="Leave your comment here"
+          id="floatingTextarea2"
+          style="height: 100px"
+          formControlName="comments"
+        ></textarea>
+        <div class="mt-2 form-check">
+          <input type="checkbox" class="form-check-input" checked="" formControlName="isUrgent"/>
+          <label class="form-check-label">Emergency</label>
+        </div>
+      </section>
+
+      <button type="button" class="btn save_btn">Send my request</button>
+    </form>
   </section>
+</section>

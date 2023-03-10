@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "naapurillisuus-48a5b": {
+      "hosting": {
+        "Naapurillisuus": [
+          "naapurillisuus-48a5b"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "naapurillisuus-48a5b"
+  }
+}

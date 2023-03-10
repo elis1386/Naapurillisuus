@@ -3,7 +3,7 @@
         <ngb-accordion #acc="ngbAccordion" activeIds="config-panel-one">
           <ngb-panel title="Help with PC" id="helpPC">
             <ng-template ngbPanelHeader let-opened="opened">
-              <button ngbPanelToggle class="accordion-button helpPC">
+              <button ngbPanelToggle class="accordion-button other">
                 Help with PC
               </button>
             </ng-template>
@@ -16,67 +16,17 @@
                   aliqua. Ut enim ad minim veniam, quis nostrud exercitation
                   ullamco laboris nisi ut aliquip ex ea commodo consequat.
                 </p>
-                <a href="">Edit task</a>
-                <p class="progressbar">
-                  Task progress:
-                  <ngb-progressbar type="success" [value]="25"
-                    >25%</ngb-progressbar
-                  >
-                </p>
-              </article>
-            </ng-template>
-          </ngb-panel>
-          <ngb-panel title="Shopping">
-            <ng-template ngbPanelHeader let-opened="opened">
-              <button ngbPanelToggle class="accordion-button shopping">
-                Shopping
-              </button>
-            </ng-template>
-            <ng-template ngbPanelContent>
-              <article class="task-body">
-                <strong>Shopping<br />La, 03.03.2023</strong>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                  sed do eiusmod tempor incididunt ut labore et dolore magna
-                  aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                  ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                </p>
-                <a href="">Edit task</a>
-                <p class="progressbar">
-                  Task progress:
-                  <ngb-progressbar type="success" [value]="0"
-                    >0%</ngb-progressbar
-                  >
-                </p>
-              </article>
-            </ng-template>
-          </ngb-panel>
-          <ngb-panel title="Shopping">
-            <ng-template ngbPanelHeader let-opened="opened">
-              <button ngbPanelToggle class="accordion-button walkpet">
-                Walk the dog
-              </button>
-            </ng-template>
-            <ng-template ngbPanelContent>
-              <article class="task_body">
-                <strong>Walk the dog<br />Ma, 01.02.2023</strong>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                  sed do eiusmod tempor incididunt ut labore et dolore magna
-                  aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                  ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                </p>
-                <a href="">Edit task</a>
-                <p class="progressbar">
-                  Task progress:
-                  <ngb-progressbar type="success" [value]="50"
-                    >50%</ngb-progressbar
-                  >
-                </p>
+                <a href="">Edit task</a> <br>
+                <button class="btn" (click)="isVisible = !isVisible">{{isVisible ? 'Hide' : 'Show'}} your volunteer</button>
+                
+                <app-volunteer-card-f-client *ngIf="isVisible" ></app-volunteer-card-f-client>
+                
               </article>
             </ng-template>
           </ngb-panel>
         </ngb-accordion>
       </section>
 </section>
+
+
 

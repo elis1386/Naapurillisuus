@@ -75,12 +75,12 @@ body {
     max-width: 100%;
   }
   .logo img{
-    width: 70%;
+    width: 80%;
   }
   .btn{
-    margin: .2em;
-    padding: .3em;
+    padding: 0.4em .7em;
   }
+ 
 }
 
 

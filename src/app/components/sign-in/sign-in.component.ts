@@ -12,11 +12,11 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./sign-in.component.css']
 })
 export class SignInComponent {
-  firebaseErrorMessage: string;
+  firebaseErrorMessage: boolean;
   loginForm: FormGroup;
 
   constructor(private afAuth: AngularFireAuth, private authService: AuthService, private router: Router){
-    this.firebaseErrorMessage = '';
+    this.firebaseErrorMessage = false;
     this.loginForm = new FormGroup({
       'email': new FormControl ('', [Validators.required, Validators.email]),
       'password': new FormControl ('', Validators.required)
@@ -29,11 +29,10 @@ export class SignInComponent {
       this.authService.loginUser(this.loginForm.value.email, this.loginForm.value.password).then((result) => {
         if(result == null){
           console.log('login into...');
-          this.router.navigate(['/helper-dashboard']);
         }
-        else if(result.isValid = false){
+        else if(result.isValid == false){
           console.log('page reloaded')
-          this.firebaseErrorMessage = result.message;
+          this.firebaseErrorMessage = true;
         }
       }).catch(() => {
 

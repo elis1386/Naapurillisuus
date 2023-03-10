@@ -1,0 +1,43 @@
+section::backdrop{
+  filter: brightness(50%);
+}
+.modal-view {
+  width: 40%;
+  height: auto;
+  position: absolute;
+  top: 30%;
+  left: 30%;
+  border-radius: 1rem;
+  background-color: white;
+  margin: 1rem;
+  padding: 1rem;
+  border: 1px solid rgb(160, 157, 157);
+}
+.modal-title {
+  font-size: 1.2rem;
+  color: var(--brown);
+  text-align: center;
+}
+.back {
+  position: absolute;
+  background-color: black;
+  opacity: 25%;
+}
+.modalBtn{
+  background-color: var(--main-color);
+  border: none;
+  color: white;
+}
+
+@media only screen and (max-width: 425px) {
+  .modal-view {
+    width: 90%;
+    top: 30%;
+    left: 1%;
+  }
+}
+@media only screen and (max-width: 320px) {
+  .modal-view {
+    left: 0;
+  }
+}

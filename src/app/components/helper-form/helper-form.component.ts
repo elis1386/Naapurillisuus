@@ -38,7 +38,9 @@ export class HelperFormComponent {
       'address': new FormControl('', [Validators.required]),
       'city': new FormControl('', [Validators.required]),
       'zip': new FormControl('', [Validators.required]),
-
+      'about': new FormControl(''),
+      'phone': new FormControl(null),
+      'role': new FormControl ('volunteer'),
     });
   }
 
@@ -48,12 +50,12 @@ export class HelperFormComponent {
     }
 
     this.authService
-      .signupUser(this.signupForm.value)
+      .signUpUser(this.signupForm.value)
       .then((result) => {
         if (result == null) {
           this.router.navigate(['helper-dashboard']);
         }
-        return throwError(() =>  new Error('Faild login')); 
+        return throwError(() =>  new Error('Failed login')); 
       })
       .catch(() => {});
   }

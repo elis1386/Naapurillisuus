@@ -6,3 +6,52 @@
     color: var(--main-color);
     font-size: 1.2rem;
   }
+
+  .call-nav-link {
+    color: #48b200;
+  }
+
+  .call-text {
+    margin: 0;
+  }
+
+  .phone {
+    display: none;
+  }
+
+  @media only screen and (max-width: 425px) {
+    .task_list,
+    .done,
+    .my_tasks {
+      margin: 0.5em;
+    }
+    .nav {
+      margin: 0.5em;
+    }
+    .nav-link {
+      font-size: 1rem;
+      padding: 0.5rem;
+    }
+  }
+  @media only screen and (max-width: 375px) {
+    .task_list,
+    .done,
+    .my_tasks {
+      margin: 0.5em;
+    }
+    .nav {
+      margin: 0.5em;
+    }
+    .nav-link {
+      font-size: 0.8em;
+      padding: 0.5em;
+    }
+
+    .call-text {
+      display: none;
+    }
+
+    .phone {
+      display: block;
+    }
+  }

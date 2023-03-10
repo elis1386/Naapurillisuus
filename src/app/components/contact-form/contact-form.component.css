@@ -1,18 +1,62 @@
 .container {
- width: 90%;
+  width: 90%;
 }
-.contact_form{
-   width: 50%;
-   position: absolute;
-   top: 10%;
-   padding: 1rem;
-   background: white;
+.contact_form {
+  width: 50%;
+  position: absolute;
+  top: 10%;
+  padding: 1rem;
+  background: white;
 }
-.text-area{
-    border: 1px solid #ced4da;
-    width: 100%;
+.text-area {
+  border: 1px solid #ced4da;
+  width: 100%;
 }
-.btn-contact{
-    background-color: var(--main-color);
-    color: white;
+.btn-contact {
+  background-color: var(--main-color);
+  color: white;
+}
+section::backdrop {
+  background: rgb(179, 177, 177);
+}
+
+.modal-view {
+  width: 40%;
+  height: auto;
+  position: absolute;
+  top: 20%;
+  left: 30%;
+  border-radius: 1rem;
+  background-color: white;
+  margin: 1rem;
+  padding: 1rem;
+  border: 1px solid rgb(160, 157, 157);
+}
+.modal-title {
+  font-size: 1.2rem;
+  color: var(--brown);
+  text-align: center;
+}
+.back {
+  position: absolute;
+  background-color: black;
+  opacity: 25%;
+}
+.modalBtn{
+  background-color: var(--main-color);
+  border: none;
+  color: white;
+}
+
+@media only screen and (max-width: 425px) {
+  .modal-view {
+    width: 90%;
+    top: 30%;
+    left: 1%;
+  }
+}
+@media only screen and (max-width: 320px) {
+  .modal-view {
+    left: 0;
+  }
 }

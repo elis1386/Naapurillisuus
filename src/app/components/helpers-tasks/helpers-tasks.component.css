@@ -72,6 +72,9 @@
     margin-top:15px;
     text-align: center;
   }
+  .actions {
+    text-decoration: none;
+  }
   
   @media only screen and (max-width: 425px) {
     .task_list,
@@ -96,6 +99,11 @@
     }
     .btnShow_id {
       width: 100%;
+    }
+    .small-btn {
+      width: auto;
+      font-size: .8em;
+
     }
   }
   @media only screen and (max-width: 320px) {

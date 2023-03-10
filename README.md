@@ -38,3 +38,4 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 Затем переходим на нашу ветку разработки. Теперь для синхронизации с веткой develop 
 /git merge develop/
 
+# deploy_naapuri

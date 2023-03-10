@@ -16,11 +16,30 @@
               enim ad minim veniam, quis nostrud exercitation ullamco laboris
               nisi ut aliquip ex ea commodo consequat.
             </p>
-            <div class="d-flex flex-column col-12">
-              <p class="fs-6 fw-semibold">Asking for details:</p>
-              <textarea name="" id="" rows="3"></textarea>
-              <button class="btn btn-send btn-lg mt-4 align-self-end">
-                send a message
+            <!-- Chat -->
+            <app-chat></app-chat>
+          </article>
+          <article class="d-flex flex-column">
+            <a
+              class="mb-4 mt-4 text-secondary align-self-center"
+              (click)="manageTask = !manageTask"
+              >Manage task</a
+            >
+            <div
+              class="d-flex flex-row justify-content-center"
+              *ngIf="manageTask"
+            >
+              <button
+                class="btn btn-secondary small-btn opacity-75 me-2"
+                (click)="canceledTask()"
+              >
+                Cancel the task
+              </button>
+              <button
+                class="btn btn-success opacity-75 small-btn"
+                (click)="completedTask()"
+              >
+                Complete the task
               </button>
             </div>
           </article>
@@ -28,4 +47,9 @@
       </ngb-panel>
     </ngb-accordion>
   </section>
+<app-modal-tasks
+    *ngIf="modalTasksService.isVisible$ | async"
+  ></app-modal-tasks> 
 </section>
+ 
+  
