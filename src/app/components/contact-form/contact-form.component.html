@@ -1,7 +1,7 @@
 <form
   class="container"
   [formGroup]="contactUsForm"
-  (ngSubmit)="sendContactUsForm()"
+  (ngSubmit)="sendContactUsForm($event)"
 >
   <h1 class="h3 mb-3 fw-normal mt-4">How can we help you?</h1>
   <div class="col-md-6 mb-3">

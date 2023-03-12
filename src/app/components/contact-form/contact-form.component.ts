@@ -44,8 +44,9 @@ export class ContactFormComponent implements OnInit {
     });
   }
 
-  sendContactUsForm() {
+  sendContactUsForm(event:Event) {
     if (this.contactUsForm.invalid) {
+      event.preventDefault()
       return this.contactUsForm.markAllAsTouched();
     }
     this.contactUsService.sendData(this.contactUsForm.value);

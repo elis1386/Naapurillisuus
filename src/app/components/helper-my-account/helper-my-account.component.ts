@@ -29,12 +29,11 @@ export class HelperMyAccountComponent implements OnInit {
     let loggedUser = JSON.parse(localStorage.getItem('user')!);
     this.userDataService.getAllUserData().subscribe((users) => {
       users.forEach((user) => {
-        if (user.uid === loggedUser['uid']) {
-          console.log(user);
-          this.currentUser = user;
-          this.qrData = `${user.firstName} ${user.lastName} ${user.role}`;
-        }
-        return this.currentUser;
+       if(user.uid === loggedUser['uid']){
+       this.currentUser = user
+       this.qrData = `${user.firstName} ${user.lastName } ${user.role}`
+       }
+       return this.currentUser
       });
       console.log(this.currentUser);
     });
