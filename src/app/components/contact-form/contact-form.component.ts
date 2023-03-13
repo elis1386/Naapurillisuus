@@ -42,11 +42,13 @@ export class ContactFormComponent implements OnInit {
       details: new FormControl('', Validators.required),
       email: new FormControl('', [Validators.required, Validators.email]),
     });
+    this.contactUsService.getAllFeedback().subscribe(data => {
+      console.log(data);
+    })
   }
 
-  sendContactUsForm(event:Event) {
+  sendContactUsForm() {
     if (this.contactUsForm.invalid) {
-      event.preventDefault()
       return this.contactUsForm.markAllAsTouched();
     }
     this.contactUsService.sendData(this.contactUsForm.value);
