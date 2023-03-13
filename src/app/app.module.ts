@@ -37,6 +37,8 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { ModalTasksComponent } from './components/modal-tasks/modal-tasks.component';
+    
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [
@@ -69,7 +71,7 @@ import { ModalTasksComponent } from './components/modal-tasks/modal-tasks.compon
     FormsModule,
     ReactiveFormsModule,
     QRCodeModule,
-    
+    NgxSpinnerModule,
     AngularFireModule.initializeApp(environment.firebase),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),

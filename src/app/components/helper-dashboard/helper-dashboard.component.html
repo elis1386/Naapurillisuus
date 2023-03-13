@@ -1,3 +1,4 @@
+
 <section class="container">
   <section class="task_list" ngbnavlink="task_list">
     <ngb-accordion
@@ -38,4 +39,7 @@
       </ngb-panel>
     </ngb-accordion>
   </section>
+  <app-modal-tasks
+    *ngIf="modalTasksService.isVisible$ | async"
+  ></app-modal-tasks> 
 </section>

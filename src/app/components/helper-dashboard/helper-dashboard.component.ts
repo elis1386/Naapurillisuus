@@ -2,6 +2,7 @@ import { Component,OnInit} from '@angular/core';
 import { VTask } from 'src/app/models/vtasks';
 import { tasks as data } from 'src/app/data/tasks';
 import { Router } from '@angular/router';
+import { ModalTasksService } from 'src/app/services/modal-tasks.service';
 
 @Component({
   selector: 'app-helper-dashboard',
@@ -16,12 +17,15 @@ export class HelperDashboardComponent implements OnInit {
   active: any;
 
   constructor(
-    private router: Router,
+    private router: Router, public modalTasksService: ModalTasksService
   ) {}
 
   ngOnInit(): void {}
 
   addToMyTasks() {
-    this.router.navigate(['/helper-dashboard/my_tasks']);
+    confirm('Do you want to take this task')
+    this.router.navigate(['/helper-dashboard/my_tasks'])
   }
+
 }
+
