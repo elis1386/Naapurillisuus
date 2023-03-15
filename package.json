@@ -25,6 +25,7 @@
     "angularx-qrcode": "^15.0.1",
     "bootstrap": "^5.2.3",
     "bootstrap-icons": "^1.10.3",
+    "lite-server": "^2.6.1",
     "ng-bootstrap-icons": "^13.1.2-canary.1",
     "ngx-bootstrap-icons": "^1.9.1",
     "rxjs": "~7.5.0",
