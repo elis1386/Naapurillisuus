@@ -100,6 +100,9 @@
   .btnShow_id {
     width: 100%;
   }
+  .alert{
+    margin: .5em;
+  }
 }
 @media only screen and (max-width: 320px) {
   .task_list,
@@ -118,4 +121,5 @@
     width: 80%;
     margin: auto;
   }
+  
 }

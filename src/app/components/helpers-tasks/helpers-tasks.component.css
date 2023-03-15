@@ -1,127 +1,125 @@
 .container {
-    margin: 0 auto;
-    padding: 0;
-  }
-  
+  margin: 0 auto;
+  padding: 0;
+}
+
+.task_list,
+.my_tasks,
+.done,
+.my_account {
+  margin: 2rem;
+  padding: 0;
+}
+.urgently {
+  color: var(--brown);
+  background-color: var(--emergency);
+}
+.shopping {
+  color: var(--brown);
+  background-color: var(--shopping);
+}
+.pets {
+  color: var(--brown);
+  background-color: var(--pets);
+}
+.other {
+  color: var(--brown);
+  background-color: var(--others);
+}
+.disabled {
+  color: var(--brown);
+  background-color: #dddddd;
+}
+.btn-send {
+  font-size: 1rem;
+  color: var(--brown);
+  background-color: #ffd453;
+  width: 20%;
+}
+.btn-take {
+  color: white;
+  background-color: #1b9c39;
+  opacity: 85%;
+  padding: 0.3em 1.6rem;
+}
+.btn-take:hover {
+  color: white;
+  background-color: #24aa6b;
+}
+.accordion-button {
+  padding: 1.8rem;
+}
+.nav {
+  margin: 2rem;
+}
+.nav-link {
+  color: var(--main-color);
+  font-size: 1.2rem;
+}
+.card-img {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 1rem;
+}
+.btnShow_id {
+  width: 50%;
+  background-color: var(--clients-btns);
+}
+#qrcode {
+  width: 160px;
+  height: 160px;
+  margin-top: 15px;
+  text-align: center;
+}
+.actions {
+  text-decoration: none;
+}
+
+@media only screen and (max-width: 425px) {
   .task_list,
-  .my_tasks,
   .done,
-  .my_account {
-    margin: 2rem;
-    padding: 0;
-  }
-  .urgently {
-    color: var(--brown);
-    background-color: var(--emergency);
-  }
-  .shopping {
-    color: var(--brown);
-    background-color: var(--shopping);
-  }
-  .pets {
-    color: var(--brown);
-    background-color: var(--pets);
-  }
-  .other {
-    color: var(--brown);
-    background-color: var(--others);
-  }
-  .disabled {
-    color: var(--brown);
-    background-color: #dddddd;
-  }
-  .btn-send {
-    font-size: 1rem;
-    color: var(--brown);
-    background-color: #ffd453;
-    width: 20%;
-  }
-  .btn-take {
-    color: white;
-    background-color: #1b9c39;
-    opacity: 85%;
-    padding: 0.3em 1.6rem;
-  }
-  .btn-take:hover {
-    color: white;
-    background-color: #24aa6b;
-  }
-  .accordion-button {
-    padding: 1.8rem;
+  .my_tasks {
+    margin: 0.5em;
   }
   .nav {
-    margin: 2rem;
+    margin: 0.5em;
   }
   .nav-link {
-    color: var(--main-color);
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
   .card-img {
-    width: 300px;
-    height: 300px;
-    object-fit: cover;
+    width: 380px;
     border-radius: 1rem;
+    margin-bottom: 1rem;
+  }
+  .btn-send {
+    width: 80%;
+    margin: auto;
   }
   .btnShow_id {
-    width: 50%;
-    background-color: var( --clients-btns);
+    width: 100%;
   }
-  #qrcode {
-    width:160px;
-    height:160px;
-    margin-top:15px;
-    text-align: center;
+  .small-btn {
+    width: auto;
+    font-size: 0.8em;
   }
-  .actions {
-    text-decoration: none;
+}
+@media only screen and (max-width: 320px) {
+  .task_list,
+  .done,
+  .my_tasks {
+    margin: 0.5em;
   }
-  
-  @media only screen and (max-width: 425px) {
-    .task_list,
-    .done,
-    .my_tasks {
-      margin: 0.5em;
-    }
-    .nav {
-      margin: 0.5em;
-    }
-    .nav-link{
-      font-size: 1rem;
-    }
-    .card-img{
-      width: 380px;
-      border-radius: 1rem;
-      margin-bottom: 1rem;
-    }
-    .btn-send {
-      width: 80%;
-      margin: auto;
-    }
-    .btnShow_id {
-      width: 100%;
-    }
-    .small-btn {
-      width: auto;
-      font-size: .8em;
-
-    }
+  .nav {
+    margin: 0.5em;
   }
-  @media only screen and (max-width: 320px) {
-    .task_list,
-    .done,
-    .my_tasks {
-      margin: 0.5em;
-    }
-    .nav {
-      margin: 0.5em;
-    }
-    .btn-send,
-    .btn-take {
-      font-size: 0.8em;
-    }
-    .btn-send {
-      width: 80%;
-      margin: auto;
-    }
+  .btn-send,
+  .btn-take {
+    font-size: 0.8em;
   }
-  
+  .btn-send {
+    width: 80%;
+    margin: auto;
+  }
+}
