@@ -42,16 +42,20 @@ section::backdrop {
   background-color: black;
   opacity: 25%;
 }
-.modalBtn{
+.modalBtn {
   background-color: var(--main-color);
   border: none;
   color: white;
+}
+.title {
+  font-size: 1.2rem;
+  text-align: center;
 }
 
 @media only screen and (max-width: 425px) {
   .modal-view {
     width: 90%;
-    top: 15%;
+    top: 20%;
     left: 1%;
   }
 }

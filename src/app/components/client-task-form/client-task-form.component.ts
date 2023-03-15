@@ -37,10 +37,11 @@ export class ClientTaskFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.addTaskForm = new FormGroup({
-      helpType: new FormControl('', Validators.required),
+      title: new FormControl('', Validators.required),
       period: new FormControl('', Validators.required),
-      comments: new FormControl('', Validators.required),
+      description: new FormControl('', Validators.required),
       isUrgent: new FormControl(''),
+ 
     });
 
     let loggedUser = JSON.parse(localStorage.getItem('user')!);
@@ -58,7 +59,10 @@ export class ClientTaskFormComponent implements OnInit {
     if (this.addTaskForm.invalid) {
       return this.addTaskForm.markAllAsTouched();
     }
-    this.clientDataService.sendTaskData(this.addTaskForm.value);
+    let task = this.addTaskForm.value
+    task.date = Date.now()
+    task.clientId = JSON.parse(localStorage.getItem('user')!).uid
+    this.clientDataService.sendTaskData(task);
     this.addTaskForm.reset();
     this.modalService.open();
   }

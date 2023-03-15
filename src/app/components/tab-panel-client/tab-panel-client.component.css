@@ -17,6 +17,7 @@
 
   .phone {
     display: block;
+    
   }
 
   @media only screen and (max-width: 425px) {
@@ -53,7 +54,6 @@
 
     .phone {
       display: block;
-      font-size: 1.3rem;
-      margin-left: 1rem;
+      margin: 0 0.5em;
     }
   }
