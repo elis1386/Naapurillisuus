@@ -1,0 +1,30 @@
+.call-btn{
+    background-color: var(--main-volunteer2);
+    color: white;
+    border-radius: 1rem;
+    border: none;
+    width: 30%;
+    padding: 1rem 0;
+    text-align: center;
+    text-decoration: none;
+}
+.call-btn:hover{
+    background-color: white;
+    color: var(--main-volunteer2);
+    border: 1px solid var(--main-volunteer2);
+}
+.textCall{
+    margin: 1rem;
+    font-size: 1.2rem;
+    text-align: center;
+}
+article{
+    height: 300px;
+    align-items: center;
+    margin-top: 4rem;
+}
+@media only screen and (max-width: 768px) {
+    .call-btn{
+        width: 50%;
+    }
+  }

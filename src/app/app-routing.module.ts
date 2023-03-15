@@ -15,6 +15,7 @@ import { ClientMyTasksComponent } from './components/client-my-tasks/client-my-t
 import { ClientDoneComponent } from './components/client-done/client-done.component';
 import { ClientTaskFormComponent } from './components/client-task-form/client-task-form.component';
 import { RoleGuard } from './services/role.guard';
+import { CallRequestComponent } from './components/call-request/call-request.component';
 
 const routes: Routes = [
   { path: '', component: MainScreenComponent },
@@ -63,6 +64,11 @@ const routes: Routes = [
     path: 'client-tasks/done',
     component: ClientDoneComponent,
     canActivate: [AuthGuard, RoleGuard],
+    data: { role: 'client' },
+  },
+  {
+    path: 'client-tasks/call',
+    component: CallRequestComponent,
     data: { role: 'client' },
   },
 ];

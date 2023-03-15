@@ -1,4 +1,23 @@
 <section class="container">
+  <section
+    class="modal-view d-flex flex-column"
+    *ngIf="modalService.isVisible$ | async"
+  >
+    <h5 class="align-self-center fs-4">{{ title }}</h5>
+    <p class="title align-self-center  align-self-center">
+      We will try our best to solve your problem as soon as possible.
+    </p>
+
+    <div class="gap-4 mt-4 d-flex justify-content-center">
+      <button
+        type="button"
+        class="btn btn-outline modalBtn px-4"
+        (click)="modalService.done()"
+      >
+        Ok
+      </button>
+    </div>
+  </section>
   <section class="task-form">
     <article class="personalinfo">
       <p><strong>Your Information</strong></p>
@@ -23,7 +42,7 @@
     <!-- task form -->
     <form [formGroup]="addTaskForm" (ngSubmit)="addToClientTask()">
       <article class="my-3 helptype col-6">
-        <p> <strong>Type of help:</strong></p>
+        <p><strong>Type of help:</strong></p>
         <select class="form-select" required="" formControlName="helpType">
           <option value="">Choose...</option>
           <option>Help with shopping</option>
@@ -45,8 +64,7 @@
       </article>
 
       <article class="col-6 my-3 helptype">
-      
-        <p> <strong>Enter period:</strong></p>
+        <p><strong>Enter period:</strong></p>
 
         <select class="form-select" required="" formControlName="period">
           <option value="">Choose suitable period</option>
@@ -105,24 +123,4 @@
       <button class="btn save_btn" type="submit">Send my request</button>
     </form>
   </section>
-</section>
-
-<section
-  class="modal-view d-flex flex-column"
-  *ngIf="modalService.isVisible$ | async"
->
-  <h5 class="align-self-center fs-4">{{ title }}</h5>
-  <p class="title align-self-center fs-6">
-    We will try our best to solve your problem ASAP
-  </p>
-
-  <div class="gap-4 mt-4 d-flex justify-content-center">
-    <button
-      type="button"
-      class="btn btn-outline modalBtn px-4"
-      (click)="modalService.done()"
-    >
-      Ok
-    </button>
-  </div>
 </section>

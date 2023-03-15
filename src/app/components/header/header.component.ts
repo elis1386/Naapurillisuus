@@ -31,6 +31,7 @@ export class HeaderComponent {
         '/client-task-form',
         '/client-tasks/my-tasks',
         '/client-tasks/done',
+        '/client-tasks/call',
       ].indexOf(window.location.pathname) != -1
     );
   }

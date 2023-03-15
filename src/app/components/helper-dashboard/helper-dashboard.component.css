@@ -103,6 +103,9 @@
   .alert{
     margin: .5em;
   }
+  .alert-text{
+    margin-bottom: 0;
+  }
 }
 @media only screen and (max-width: 320px) {
   .task_list,
@@ -120,6 +123,10 @@
   .btn-send {
     width: 80%;
     margin: auto;
+  }
+  .alert-text{
+    margin-bottom: 0;
+    font-size: .8em;
   }
   
 }

@@ -4,9 +4,9 @@
     role="alert"
     *ngIf="alert"
   >
-      <strong>Holy guacamole!</strong>&nbsp; You can
+      <strong>Holy guacamole!</strong>&nbsp;<p class="alert-text">You can
       <a routerLink="/helper-dashboard/my_tasks" class="alert-link text-decoration-none link-hover">&nbsp;check a new task&nbsp; </a>
-      taken!
+      taken!</p> 
     <button type="button" class="btn-close" (click)="closeAlert()"></button>
   </article>
   <section class="task_list" ngbnavlink="task_list">
