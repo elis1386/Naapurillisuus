@@ -76,6 +76,13 @@
   text-decoration: none;
 }
 
+
+@media only screen and (max-width: 768px) {
+    .modal-view {
+      left: 15%;
+      width: 70%;
+    }
+}
 @media only screen and (max-width: 425px) {
   .task_list,
   .done,
@@ -103,6 +110,10 @@
   .small-btn {
     width: auto;
     font-size: 0.8em;
+  }
+  .modal-view {
+    width: 90%;
+    font-size: 1.2rem;
   }
 }
 @media only screen and (max-width: 320px) {

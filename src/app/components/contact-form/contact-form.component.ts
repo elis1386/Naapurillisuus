@@ -1,21 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { BehaviorSubject, Observable, throwError } from 'rxjs';
-import {
-  AngularFirestore,
-  AngularFirestoreCollection,
-} from '@angular/fire/compat/firestore';
-import {
-  addDoc,
-  Firestore,
-  collection,
-  getDocs,
-  doc,
-  updateDoc,
-  deleteDoc,
-  docData,
-  collectionData,
-} from '@angular/fire/firestore';
+import { AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 import { ContactUs } from 'src/app/models/contactUs';
 import { ContactUsService } from 'src/app/services/contact-us.service';
 import { ModalService } from 'src/app/services/modal.service';
@@ -26,10 +11,13 @@ import { ModalService } from 'src/app/services/modal.service';
   styleUrls: ['./contact-form.component.css'],
 })
 export class ContactFormComponent implements OnInit {
+  form: any;
   contactUsForm: FormGroup;
   contactUsCollection: AngularFirestoreCollection<ContactUs>;
   allFeedback: any;
   title: string = 'Thanks for your submission.';
+  textTemplate: string[];
+  selectedText: string;
 
   constructor(
     public contactUsService: ContactUsService,
@@ -42,6 +30,22 @@ export class ContactFormComponent implements OnInit {
       details: new FormControl('', Validators.required),
       email: new FormControl('', [Validators.required, Validators.email]),
     });
+
+    this.textTemplate = [
+      'Good daytime',
+      'Could you please to help me?',
+      'I can not do task.',
+      'I always got a error message.',
+      'I am not satisfied your service.',
+      'It works bad.',
+      'I am so glad to use your app.',
+      'It is reallu helpfull.',
+    ];
+    this.selectedText = '';
+  }
+  showHints(text: string) {
+    this.selectedText += text + ' ';
+    console.log('click');
   }
 
   sendContactUsForm() {

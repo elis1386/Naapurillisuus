@@ -12,14 +12,24 @@ import { ModalTasksService } from 'src/app/services/modal-tasks.service';
 export class HelpersTasksComponent implements OnInit {
   manageTask: boolean = false;
   tasks: CTask[] = [];
+  titleCancel: string = 'Do you really want to cancel this task?';
 
   constructor(public modalTasksService: ModalTasksService, public clientDataService: ClientDataService) {}
+  cancel() {
+    this.modalTasksService.cancel();
+  }
+  done() {
+    this.modalTasksService.done();
+  }
+  close() {
+    this.modalTasksService.close();
+  }
 
   ngOnInit() {
-    let clientId = JSON.parse(localStorage.getItem('user')!).uid;
+    
     this.clientDataService.getAllTasks().subscribe((data) => {
       data.forEach(task => {
-        if(clientId === task.clientId ){
+        if(task.clientId ){
           this.tasks.push(task)
         }
     });

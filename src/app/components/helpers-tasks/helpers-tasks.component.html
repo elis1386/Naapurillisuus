@@ -1,37 +1,39 @@
 <section class="container">
   <section class="my_tasks">
-    <ngb-accordion #a="ngbAccordion"
-    activeIds="custom-panel-1"
-    *ngFor="let task of tasks"
-  >
-    <ngb-panel id="custom-panel-1">
-      <ng-template ngbPanelHeader let-opened="opened">
-        <button
-          ngbPanelToggle
-          class="accordion-button"
-          [ngClass]="{
-            shopping: task.title == 'Shopping',
-            urgently: task.title == 'Urgently',
-            pets: task.title == 'Pets',
-            other: task.title == 'Others',
-            moving: task.title == 'Moving'
-          }"
-        >
-          <span
-            ><b> {{ task.title }}</b> &nbsp;{{ task.date | date: 'dd/MM/yyyy' }}</span
+    <ngb-accordion
+      #a="ngbAccordion"
+      activeIds="custom-panel-1"
+      *ngFor="let task of tasks"
+    >
+      <ngb-panel id="custom-panel-1">
+        <ng-template ngbPanelHeader let-opened="opened">
+          <button
+            ngbPanelToggle
+            class="accordion-button"
+            [ngClass]="{
+              shopping: task.title == 'Shopping',
+              urgently: task.title == 'Urgently',
+              pets: task.title == 'Pets',
+              other: task.title == 'Others',
+              moving: task.title == 'Moving'
+            }"
           >
-        </button>
-      </ng-template>
-      <ng-template ngbPanelContent>
-        <article class="accordion-body">
-          <strong>{{ task.title }}</strong>
-          <p>
-            {{ task.description }}
-          </p>
-      
-          </article>
-            <!-- Chat -->
+            <span
+              ><b> {{ task.title }}</b> &nbsp;{{
+                task.date | date : "dd/MM/yyyy"
+              }}</span
+            >
+          </button>
+        </ng-template>
+        <ng-template ngbPanelContent>
           <article>
+            <strong>{{ task.title }}</strong>
+            <p>
+              {{ task.description }}
+            </p>
+          </article>
+          <!-- Chat -->
+          <article class="">
             <app-chat></app-chat>
           </article>
           <article class="d-flex flex-column">
@@ -40,29 +42,32 @@
               (click)="manageTask = !manageTask"
               >Manage task</a
             >
-            <div
+            <article
               class="d-flex flex-row justify-content-center"
               *ngIf="manageTask"
             >
-              <button
-                class="btn btn-secondary small-btn opacity-75 me-2"
-                (click)="canceledTask()"
-              >
-                Cancel the task
-              </button>
+              <div>
+                <button
+                  class="btn btn-secondary small-btn opacity-75 me-2"
+                  (click)="canceledTask()"
+                >
+                  Cancel the task
+                </button>
+                <app-modal-tasks
+                  *ngIf="modalTasksService.isVisible$ | async"
+                ></app-modal-tasks>
+              </div>
+
               <button
                 class="btn btn-success opacity-75 small-btn"
                 (click)="completedTask()"
               >
                 Complete the task
               </button>
-            </div>
+            </article>
           </article>
         </ng-template>
       </ngb-panel>
     </ngb-accordion>
   </section>
-  <app-modal-tasks
-    *ngIf="modalTasksService.isVisible$ | async"
-  ></app-modal-tasks>
 </section>
