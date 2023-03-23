@@ -1,7 +1,5 @@
 import { Component, Injectable, Input, OnInit } from '@angular/core';
-import {
-  AngularFirestoreCollection,
-} from '@angular/fire/compat/firestore';
+import { AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 import { User } from 'src/app/models/users';
 import { UserDataService } from 'src/app/services/user-data.service';
 import {
@@ -28,6 +26,8 @@ export class ClientTaskFormComponent implements OnInit {
   title: string = 'We have got your request.';
   addTaskForm: FormGroup;
   tasksCollection: AngularFirestoreCollection<CTask>;
+  textTemplate: string[];
+  selectedText: string;
 
   constructor(
     public userDataService: UserDataService,
@@ -41,7 +41,6 @@ export class ClientTaskFormComponent implements OnInit {
       period: new FormControl('', Validators.required),
       description: new FormControl('', Validators.required),
       isUrgent: new FormControl(''),
- 
     });
 
     let loggedUser = JSON.parse(localStorage.getItem('user')!);
@@ -53,15 +52,36 @@ export class ClientTaskFormComponent implements OnInit {
         return this.currentClient;
       });
     });
+
+    this.textTemplate = [
+      'Hello. ',
+      'I feel bad.',
+      'Could you please to help me with my problem? ',
+      'Take my dog for a walk for 20 min.',
+     /*  'Buy some food in nearest shop. ',
+      'Help me with moving. ',
+      'Ihave some problem with PC. ', */
+
+      
+    ];
+    this.selectedText = '';
+  }
+
+  showHints(text: string) {
+    this.selectedText += text + ' ';
+    console.log('click');
+  }
+  clearInpiut() {
+    this.selectedText = '';
   }
 
   addToClientTask() {
     if (this.addTaskForm.invalid) {
       return this.addTaskForm.markAllAsTouched();
     }
-    let task = this.addTaskForm.value
-    task.date = Date.now()
-    task.clientId = JSON.parse(localStorage.getItem('user')!).uid
+    let task = this.addTaskForm.value;
+    task.date = Date.now();
+    task.clientId = JSON.parse(localStorage.getItem('user')!).uid;
     this.clientDataService.sendTaskData(task);
     this.addTaskForm.reset();
     this.modalService.open();

@@ -36,7 +36,9 @@ export class HelperDashboardComponent implements OnInit {
   }
 
   addToMyTasks() {
+    let currentTask = this.db.collection('tasks').doc('tasks/' )
     this.alert = true;
+    /* add ngClass to this tasl on hdashbord - hidden*/
   }
 
   closeAlert() {
