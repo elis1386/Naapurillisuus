@@ -16,10 +16,10 @@ export class HelpersTasksComponent implements OnInit {
   constructor(public modalTasksService: ModalTasksService, public clientDataService: ClientDataService) {}
 
   ngOnInit() {
-    let clientId = JSON.parse(localStorage.getItem('user')!).uid;
+    
     this.clientDataService.getAllTasks().subscribe((data) => {
       data.forEach(task => {
-        if(clientId === task.clientId ){
+        if(task.clientId ){
           this.tasks.push(task)
         }
     });
