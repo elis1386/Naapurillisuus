@@ -44,6 +44,25 @@
     margin-left: 1rem;
   }
 
+  .modal-view {
+    width: 80%;
+    height: auto;
+    position: absolute;
+    top: 25%;
+    left: 10%;
+    border-radius: 1rem;
+    text-align: center;
+    background-color: white;
+    margin: 1rem;
+    padding: 1rem;
+    border: 1px solid rgb(160, 157, 157);
+  }
+  .modalBtn {
+    background-color: var(--main-client);
+    border: none;
+    color: white;
+  }
+
   @media only screen and (max-width: 768px) {
     
     .card-img {
@@ -54,6 +73,11 @@
 
     .btnShow_id {
         width: 100%;
+      }
+
+      .modal-view {
+        left: 10%;
+        width: 75%;
       }
   }
 
@@ -76,6 +100,12 @@
     }
     .qrcode {
       margin-left: 1.5rem;
+    }
+
+    .modal-view {
+      left: 5%;
+      top: auto;
+      width: 80%;
     }
   }
   @media only screen and (max-width: 320px) {

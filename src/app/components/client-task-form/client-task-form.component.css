@@ -12,6 +12,9 @@
   margin: 1rem 0;
   padding: 0;
 }
+.info-text{
+  font-size: 1.2rem;
+}
 
 .form-check-input:checked {
   background-color: var(--main-client);
