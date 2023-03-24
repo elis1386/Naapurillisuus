@@ -3,9 +3,10 @@
     class="modal-view d-flex flex-column"
     *ngIf="modalService.isVisible$ | async"
   >
-    <h5 class="align-self-center fs-4">{{ title }}</h5>
+    <h5 class="align-self-center fs-4"> {{ currentClient.firstName }} </h5>
     <p class="title align-self-center align-self-center">
-      We will try our best to solve your problem as soon as possible.
+      Your request is sent. Please, wait for your volunteer to help you!
+
     </p>
 
     <div class="gap-4 mt-4 d-flex justify-content-center">
@@ -21,7 +22,7 @@
   <section class="task-form">
     <article class="personalinfo">
       <p><strong>Your Information</strong></p>
-      <p>
+      <p class="info-text">
         {{ currentClient.firstName }} <br />
         {{ currentClient.lastName }}
       </p>
@@ -32,7 +33,7 @@
 
     <article class="address">
       <p><strong>Your Address</strong></p>
-      <p>
+      <p class="info-text">
         {{ currentClient.zip }} <br />
         {{ currentClient.city }}, {{ currentClient.address }}
       </p>

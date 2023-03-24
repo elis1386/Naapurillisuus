@@ -20,22 +20,34 @@
             <button
               type="button"
               class="btn btnShow_id"
-              (click)="myQrCode = !myQrCode"
+              (click)="volunteerQR()"
             >
-            {{myQrCode ? 'Hide' : 'Show'}} QR code
+            Volunteer QR-code
             </button>
           </div>
         </section>
-       <!-- The QR code should be moved to modal -->
-          <!-- 
-        <div class="qr" *ngIf="myQrCode">
-          <h5 class="text-qr">Volunteer QR Code:</h5>
-          <qrcode
-            [qrdata]="'Elizaveta Pashkovskaya volunteer from Naapuriliisuus'"
-            [width]="150"
-            [errorCorrectionLevel]="'M'"
-            >{{ myQrCode ? "Hide" : "Show" }}</qrcode
+       <!-- The QR code modal -->
+     
+        <section
+        class="modal-view d-flex flex-column"
+        *ngIf="modalService.isVisible$ | async"
+      >
+        <h5 class="text-qr">Volunteer QR Code:</h5>
+        <qrcode
+        [qrdata]="qrData"
+          [width]="150"
+          [errorCorrectionLevel]="'M'"
+          ></qrcode
+        >
+        <div class="gap-4 mt-4 d-flex justify-content-center">
+          <button
+            type="button"
+            class="btn btn-outline modalBtn px-4"
+            (click)="modalService.done()"
           >
-        </div> -->
+            Ok
+          </button>
+        </div>
+      </section>
       </section>
     </main>

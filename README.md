@@ -43,5 +43,6 @@ ng build
 firebase deploy
 
 # tests
+
 cd /tests and inside tests folder fill the command 
 npx playwright test --headed
