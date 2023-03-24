@@ -43,13 +43,18 @@
     <form [formGroup]="addTaskForm" (ngSubmit)="addToClientTask()">
       <article class="my-3 helptype col-6">
         <p><strong>Type of help:</strong></p>
-        <select class="form-select" required="" formControlName="helpType">
+        <select class="form-select" required="" formControlName="title">
           <option value="">Choose...</option>
-          <option>Help with shopping</option>
+          <option>Shopping</option>
+          <option>Pets</option>
+          <option>Urgently</option>
+          <option>Others</option>
+          <option>Moving</option> 
+       <!--    <option>Help with shopping</option>
           <option>Walk with my pet</option>
           <option>Help with moving</option>
           <option>Help with PC or other gadgets</option>
-          <option>Other</option>
+          <option>Urgently</option> -->
         </select>
         <p
           *ngIf="
@@ -93,7 +98,7 @@
             placeholder="Leave your comment here"
             id="floatingTextarea2"
             style="height: 100px"
-            formControlName="comments"
+            formControlName="description"
           >
           comments
         </textarea

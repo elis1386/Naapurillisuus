@@ -38,4 +38,9 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 Затем переходим на нашу ветку разработки. Теперь для синхронизации с веткой develop 
 /git merge develop/
 
-# deploy_naapuri
+# Firebase deploy
+ng build
+firebase deploy
+
+# tests
+npx playwright test --headed

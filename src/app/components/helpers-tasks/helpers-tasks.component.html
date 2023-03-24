@@ -1,21 +1,37 @@
 <section class="container">
   <section class="my_tasks">
-    <ngb-accordion #a="ngbAccordion" activeIds="custom-panel-1">
-      <ngb-panel id="custom-panel-1">
-        <ng-template ngbPanelHeader let-opened="opened">
-          <button ngbPanelToggle class="accordion-button urgently">
-            <span><b> Urgently</b> &nbsp;04/10/2023</span>
-          </button>
-        </ng-template>
-        <ng-template ngbPanelContent>
-          <article class="accordion-body">
-            <strong>Walking with pets.</strong>
-            <p>
-              I have a dog, which is 5 years old, labrador Missy. I got ill, so
-              I need someone to take Missy for a walk. She likes active games
-              and play with a ball.
-            </p>
+    <ngb-accordion #a="ngbAccordion"
+    activeIds="custom-panel-1"
+    *ngFor="let task of tasks"
+  >
+    <ngb-panel id="custom-panel-1">
+      <ng-template ngbPanelHeader let-opened="opened">
+        <button
+          ngbPanelToggle
+          class="accordion-button"
+          [ngClass]="{
+            shopping: task.title == 'Shopping',
+            urgently: task.title == 'Urgently',
+            pets: task.title == 'Pets',
+            other: task.title == 'Others',
+            moving: task.title == 'Moving'
+          }"
+        >
+          <span
+            ><b> {{ task.title }}</b> &nbsp;{{ task.date | date: 'dd/MM/yyyy' }}</span
+          >
+        </button>
+      </ng-template>
+      <ng-template ngbPanelContent>
+        <article class="accordion-body">
+          <strong>{{ task.title }}</strong>
+          <p>
+            {{ task.description }}
+          </p>
+      
+          </article>
             <!-- Chat -->
+          <article>
             <app-chat></app-chat>
           </article>
           <article class="d-flex flex-column">

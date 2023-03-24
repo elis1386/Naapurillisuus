@@ -29,6 +29,10 @@
   color: var(--brown);
   background-color: var(--others);
 }
+.moving {
+  color: var(--brown);
+  background-color: var(--moving);
+}
 .disabled {
   color: var(--brown);
   background-color: #dddddd;

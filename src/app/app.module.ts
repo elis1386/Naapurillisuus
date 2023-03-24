@@ -39,6 +39,7 @@ import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { ModalTasksComponent } from './components/modal-tasks/modal-tasks.component';
 import { VolunteerCardFClientComponent } from './components/volunteer-card-f-client/volunteer-card-f-client.component';
 import { CallRequestComponent } from './components/call-request/call-request.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -85,6 +86,7 @@ import { CallRequestComponent } from './components/call-request/call-request.com
     AngularFireStorageModule,
     AngularFirestoreModule,
     AngularFireAuthModule,
+    CommonModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

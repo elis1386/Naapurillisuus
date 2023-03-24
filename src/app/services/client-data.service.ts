@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
-import { Firestore } from '@angular/fire/firestore';
+import { collection, collectionData, Firestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { CTask } from '../models/client-tasks';
 
@@ -15,5 +15,9 @@ export class ClientDataService {
 
   sendTaskData(task:CTask){
     this.db.collection('tasks').add(task)
+  }
+  getAllTasks(): Observable<CTask[]> {
+    let tasks = collection(this.firestore, 'tasks');
+    return collectionData(tasks, { idField: 'id' }) as Observable<CTask[]>;
   }
 }
