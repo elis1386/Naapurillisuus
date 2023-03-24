@@ -37,6 +37,7 @@ export class ClientFormComponent {
       'role': new FormControl('client'),
       'about': new FormControl(null),
     });
+    
   }
 
   signUp() {

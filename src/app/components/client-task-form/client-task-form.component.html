@@ -6,6 +6,7 @@
     <h5 class="align-self-center fs-4"> {{ currentClient.firstName }} </h5>
     <p class="title align-self-center align-self-center">
       Your request is sent. Please, wait for your volunteer to help you!
+
     </p>
 
     <div class="gap-4 mt-4 d-flex justify-content-center">
@@ -93,7 +94,17 @@
       <section class="comment">
         <article>
           <h6>Comments:</h6>
+          <article class="d-flex flex-wrap gap-2">
+            <a
+              *ngFor="let text of textTemplate"
+              (click)="showHints(text)"
+              id="text"
+              class="btn btn-hint rounded-pill"
+              >{{ text }} +</a
+            >
+          </article>
           <textarea
+            [(ngModel)]="selectedText"
             class="form-control"
             placeholder="Leave your comment here"
             id="floatingTextarea2"

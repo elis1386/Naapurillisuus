@@ -59,6 +59,17 @@
   font-size: 1rem;
   margin: 0.5em;
 }
+.btn-hint {
+  background-color: #ffeddd;
+  color: var(--brown);
+  margin: 0 0.125em 0.333em 0;
+  text-decoration: none;
+  padding: 0.5em;
+}
+.btn-hint:hover {
+  background-color: var(--main-client);
+  color: white;
+}
 @media only screen and (max-width: 768px) {
   .today_btn {
     width: 30%;
@@ -78,6 +89,9 @@
     }
     .task-form {
       margin: 1rem;
+    }
+    .btn-hint {
+      font-size: 0.8em;
     }
   }
 
