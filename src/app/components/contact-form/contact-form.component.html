@@ -29,8 +29,9 @@
   </div>
   <div class="mb-3">
     <label for="details" class="mb-2">Enter your question, please.</label>
-    <textarea rows="6" type="text" class="text-area" formControlName="details">
-    </textarea>
+    <app-voice-recognition></app-voice-recognition>
+    <!-- <textarea rows="6" type="text" class="text-area" formControlName="details">
+    </textarea> -->
     <p
       *ngIf="
         this.contactUsForm.get('details')?.invalid &&

@@ -38,10 +38,4 @@ export class UserDataService {
     let user = doc(this.firestore, 'users/' + loggedUser.uid);
     return docData(user, { idField: 'id' });
   }
-
-  /*  getUser() {
-    let loggedUser = JSON.parse(localStorage.getItem('user')!);
-    let currentUser = collection(this.firestore, 'users/' + loggedUser.uid)
-   
-  }  */
 }

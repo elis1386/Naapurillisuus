@@ -1,0 +1,10 @@
+<div class="input-group mb-3 gap-2">
+    <textarea rows="6" type="text" id="texttttttt" class="text-area form-control" [value]="transcript">
+      {{transcript}}
+    </textarea>
+   
+    <div class="input-group-append">
+      <button *ngIf="running === false" class="btn btn-success rounded-circle" type="button" (click)="speachToText()"><i class="bi bi-mic"></i></button>
+      <button *ngIf="running === true" class="btn btn-danger rounded-circle" type="button" (click)="speachToText()"><i class="bi bi-mic"></i></button>
+    </div>
+  </div>
