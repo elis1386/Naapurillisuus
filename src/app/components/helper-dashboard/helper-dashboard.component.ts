@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { VTask } from 'src/app/models/vtasks';
 import { tasks as data } from 'src/app/data/tasks';
 import { Router } from '@angular/router';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { ClientDataService } from 'src/app/services/client-data.service';
 import { CTask } from 'src/app/models/client-tasks';
@@ -28,16 +28,22 @@ export class HelperDashboardComponent implements OnInit {
     public clientDataService: ClientDataService
   ) {}
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.clientDataService.getAllTasks().subscribe((data) => {
-      this.tasks = data;
-      console.log(this.tasks);
+      data.forEach((task: CTask) => {
+        if(task.status.active)
+        this.tasks.push(task);
+        console.log(this.tasks);
+      }
+      )
     });
   }
-
-  addToMyTasks() {
-    let currentTask = this.db.collection('tasks').doc('tasks/' )
+ 
+  addToMyTasks(id: string) {
+    let currentTask: AngularFirestoreDocument<CTask> = this.db.doc(`tasks/${id}`)
     this.alert = true;
+    console.log(currentTask)
+    // currentTask.update(s)
     /* add ngClass to this tasl on hdashbord - hidden*/
   }
 
