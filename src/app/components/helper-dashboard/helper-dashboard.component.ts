@@ -21,6 +21,7 @@ export class HelperDashboardComponent implements OnInit {
   tasks: CTask[] = [];
   active: any;
   alert: boolean = false;
+  currentTask: CTask;
 
   constructor(
     private router: Router,
@@ -39,11 +40,12 @@ export class HelperDashboardComponent implements OnInit {
     });
   }
  
-  addToMyTasks(id: string) {
-    let currentTask: AngularFirestoreDocument<CTask> = this.db.doc(`tasks/${id}`)
-    this.alert = true;
+  addToMyTasks(id: string | undefined) {
+    let currentTask = this.clientDataService.getTask(id!)
     console.log(currentTask)
+    this.alert = true;
     // currentTask.update(s)
+
     /* add ngClass to this tasl on hdashbord - hidden*/
   }
 

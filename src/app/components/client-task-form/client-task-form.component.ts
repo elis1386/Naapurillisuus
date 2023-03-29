@@ -11,6 +11,7 @@ import {
 import { ClientDataService } from 'src/app/services/client-data.service';
 import { CTask } from 'src/app/models/client-tasks';
 import { ModalService } from 'src/app/services/modal.service';
+
 import { v4 as uuid} from 'uuid';
 
 @Component({
@@ -54,6 +55,7 @@ export class ClientTaskFormComponent implements OnInit {
       });
     });
 
+
     this.textTemplate = [
       'Hello. ',
       'I feel bad.',
@@ -65,6 +67,14 @@ export class ClientTaskFormComponent implements OnInit {
 
       
     ];
+     this.textTemplate = [
+      'Hello. ',
+      'I feel bad.',
+      'Could you please to help me with my problem? ',
+      'Take my dog for a walk for ',
+      'Do some shopping for me in nearest shop.',
+      'Help me with updating my PC',
+    ]; 
     this.selectedText = '';
   }
 

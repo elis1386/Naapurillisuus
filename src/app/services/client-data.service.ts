@@ -1,17 +1,18 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
 import { collection, collectionData, Firestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { CTask } from '../models/client-tasks';
+import firebase from 'firebase/compat/app'
 
 @Injectable({
   providedIn: 'root'
 })
 export class ClientDataService {
-  task: Observable<CTask[]>
+  tasks: Observable<CTask[]>
   tasksCollection: AngularFirestoreCollection<CTask>
 
-  constructor(private firestore:Firestore, private db:AngularFirestore private afs: ) { }
+  constructor(private firestore:Firestore, private db:AngularFirestore) { }
 
   sendTaskData(task:CTask){
     this.db.collection('tasks').doc(
@@ -23,8 +24,16 @@ export class ClientDataService {
     return collectionData(tasks, { idField: 'id' }) as Observable<CTask[]>;
   }
 
-  getTask(): Observable<CTask>{
-
-    return 
+  getTask(id: string): CTask | any{
+    let currentTask;
+     return firebase.firestore().collection('tasks').doc(id).get()
+    .then(task=>{
+        currentTask = task.data();
+        console.log(currentTask)
+        return currentTask;
+      })
+      .catch((error) => {
+        console.log("Error getting document:", error);
+      });
   }
 }
