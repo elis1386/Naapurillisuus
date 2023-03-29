@@ -2,11 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { VTask } from 'src/app/models/vtasks';
 import { tasks as data } from 'src/app/data/tasks';
 import { Router } from '@angular/router';
-import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
+import {
+  AngularFirestore,
+  AngularFirestoreDocument,
+} from '@angular/fire/compat/firestore';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { ClientDataService } from 'src/app/services/client-data.service';
 import { CTask } from 'src/app/models/client-tasks';
 import { CommonModule } from '@angular/common';
+import { updateDoc, doc } from '@firebase/firestore';
 
 @Component({
   selector: 'app-helper-dashboard',
@@ -21,6 +25,7 @@ export class HelperDashboardComponent implements OnInit {
   tasks: CTask[] = [];
   active: any;
   alert: boolean = false;
+  currentTask: any;
 
   constructor(
     private router: Router,
@@ -31,19 +36,21 @@ export class HelperDashboardComponent implements OnInit {
   ngOnInit() {
     this.clientDataService.getAllTasks().subscribe((data) => {
       data.forEach((task: CTask) => {
-        if(task.status.active)
-        this.tasks.push(task);
-        console.log(this.tasks);
-      }
-      )
+        if (task.status.active) this.tasks.push(task);
+      });
     });
   }
- 
-  addToMyTasks(id: string) {
-    let currentTask: AngularFirestoreDocument<CTask> = this.db.doc(`tasks/${id}`)
+
+  addToMyTasks(id: string | undefined) {
+    this.clientDataService.getTask(id!).then((res) => {
+      this.currentTask = res;
+      this.currentTask.status = { active: false, inProgress: true };
+      this.db.doc(`tasks/${this.currentTask.id}`).update({status: {active: false, inProgress: true}})
+    });
+
     this.alert = true;
-    console.log(currentTask)
     // currentTask.update(s)
+
     /* add ngClass to this tasl on hdashbord - hidden*/
   }
 

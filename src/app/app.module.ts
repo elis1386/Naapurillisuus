@@ -65,7 +65,7 @@ import { CommonModule } from '@angular/common';
     ModalTasksComponent,
     ClientTaskFormComponent,
     VolunteerCardFClientComponent,
-    CallRequestComponent
+    CallRequestComponent,
   ],
   imports: [
     BrowserModule,
@@ -75,6 +75,7 @@ import { CommonModule } from '@angular/common';
     FormsModule,
     ReactiveFormsModule,
     QRCodeModule,
+    
     
     AngularFireModule.initializeApp(environment.firebase),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
