@@ -29,7 +29,7 @@ export class HelpersTasksComponent implements OnInit {
     
     this.clientDataService.getAllTasks().subscribe((data) => {
       data.forEach(task => {
-        if(task.clientId ){
+        if(task.status.inProgress){
           this.tasks.push(task)
         }
     });

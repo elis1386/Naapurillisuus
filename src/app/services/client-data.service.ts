@@ -11,13 +11,20 @@ export class ClientDataService {
   task: Observable<CTask[]>
   tasksCollection: AngularFirestoreCollection<CTask>
 
-  constructor(private firestore:Firestore, private db:AngularFirestore) { }
+  constructor(private firestore:Firestore, private db:AngularFirestore private afs: ) { }
 
   sendTaskData(task:CTask){
-    this.db.collection('tasks').add(task)
+    this.db.collection('tasks').doc(
+      `${task.id} `
+      ).set(task)
   }
   getAllTasks(): Observable<CTask[]> {
     let tasks = collection(this.firestore, 'tasks');
     return collectionData(tasks, { idField: 'id' }) as Observable<CTask[]>;
+  }
+
+  getTask(): Observable<CTask>{
+
+    return 
   }
 }

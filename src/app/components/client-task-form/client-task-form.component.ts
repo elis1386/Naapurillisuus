@@ -11,8 +11,8 @@ import {
 import { ClientDataService } from 'src/app/services/client-data.service';
 import { CTask } from 'src/app/models/client-tasks';
 import { ModalService } from 'src/app/services/modal.service';
-import { textTemplate as data } from 'src/app/data/textTemplates';
-import { TaskTemp } from 'src/app/models/tasks-template';
+
+import { v4 as uuid} from 'uuid';
 
 @Component({
   selector: 'app-client-task-form',
@@ -29,7 +29,6 @@ export class ClientTaskFormComponent implements OnInit {
   addTaskForm: FormGroup;
   tasksCollection: AngularFirestoreCollection<CTask>;
   textTemplate: string[];
- /*  textTemplate:  TaskTemp[] = data; */
   selectedText: string;
 
   constructor(
@@ -56,6 +55,18 @@ export class ClientTaskFormComponent implements OnInit {
       });
     });
 
+
+    this.textTemplate = [
+      'Hello. ',
+      'I feel bad.',
+      'Could you please to help me with my problem? ',
+      'Take my dog for a walk for 20 min.',
+     /*  'Buy some food in nearest shop. ',
+      'Help me with moving. ',
+      'Ihave some problem with PC. ', */
+
+      
+    ];
      this.textTemplate = [
       'Hello. ',
       'I feel bad.',
@@ -81,6 +92,8 @@ export class ClientTaskFormComponent implements OnInit {
     }
     let task = this.addTaskForm.value;
     task.date = Date.now();
+    task.status = {active: true}
+    task.id = uuid();
     task.clientId = JSON.parse(localStorage.getItem('user')!).uid;
     this.clientDataService.sendTaskData(task);
     this.addTaskForm.reset();

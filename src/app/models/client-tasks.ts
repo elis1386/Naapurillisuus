@@ -1,5 +1,5 @@
 export interface CTask{
-    id?: number
+    id?: string
     category: string
     title: string
     description: string
@@ -8,9 +8,12 @@ export interface CTask{
     date: string
     class: string
     clientId: string
-
-}
-
+    status: {
+      active: boolean
+      inProgress: boolean
+      done: boolean
+      }
+    }
 
 
 /* id: 4,
