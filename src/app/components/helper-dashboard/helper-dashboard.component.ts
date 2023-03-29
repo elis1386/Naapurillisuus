@@ -44,6 +44,7 @@ export class HelperDashboardComponent implements OnInit {
     this.alert = true;
     console.log(currentTask)
     // currentTask.update(s)
+
     /* add ngClass to this tasl on hdashbord - hidden*/
   }
 

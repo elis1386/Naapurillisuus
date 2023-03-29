@@ -24,3 +24,6 @@
  /* badge */
  --in-progress: #1e8f07;
 }
+* {
+  box-sizing: border-box;
+}
