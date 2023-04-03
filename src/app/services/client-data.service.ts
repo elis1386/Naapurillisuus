@@ -11,7 +11,7 @@ export class ClientDataService {
   task: Observable<CTask[]>
   tasksCollection: AngularFirestoreCollection<CTask>
 
-  constructor(private firestore:Firestore, private db:AngularFirestore private afs: ) { }
+  constructor(private firestore:Firestore, private db:AngularFirestore ) { }
 
   sendTaskData(task:CTask){
     this.db.collection('tasks').doc(
@@ -23,8 +23,4 @@ export class ClientDataService {
     return collectionData(tasks, { idField: 'id' }) as Observable<CTask[]>;
   }
 
-  getTask(): Observable<CTask>{
-
-    return 
-  }
 }
