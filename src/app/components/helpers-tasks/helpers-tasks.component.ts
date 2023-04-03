@@ -35,12 +35,14 @@ export class HelpersTasksComponent implements OnInit {
     });
   })
   }
-  completedTask() {
+  completedTask(id?:string) {
     this.modalTasksService.open();
     console.log('modal should be open');
+    this.clientDataService.update(id, false, false, true)
   }
-  canceledTask() {
+  canceledTask(id?:string) {
     this.modalTasksService.open();
     console.log('modal should be open');
+    this.clientDataService.update(id, true, false)
   }
 }
