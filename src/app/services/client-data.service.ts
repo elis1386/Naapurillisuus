@@ -40,7 +40,7 @@ export class ClientDataService {
 
   } 
 
-  update(id?: string, active: boolean = false, inProgress: boolean = false, done: boolean = false, volunteerID?: string){
+  update(id?: string, active: boolean = false, inProgress: boolean = false, done: boolean = false, volunteerID: string = ''){
     firebase.firestore().collection('tasks').doc(id).update({status:{active: active, inProgress: inProgress, done: done}, volunteerID: volunteerID})
   }
 }

@@ -28,11 +28,11 @@ export class HelpersTasksComponent implements OnInit {
   }
 
   ngOnInit() {
-    
+  this.currentUserId = JSON.parse(localStorage.getItem('user')!).uid;
     this.clientDataService.getAllTasks().subscribe((data) => {
     this.tasks = []
       data.forEach(task => {
-        if(task.status.inProgress){
+        if(task.status.inProgress && task.volunteerID === this.currentUserId){
           this.tasks.push(task)
         }
     });

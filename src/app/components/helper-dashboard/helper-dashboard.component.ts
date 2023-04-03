@@ -7,6 +7,7 @@ import {
 } from '@angular/fire/compat/firestore';
 import { ClientDataService } from 'src/app/services/client-data.service';
 import { CTask } from 'src/app/models/client-tasks';
+import { User } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-helper-dashboard',
@@ -21,6 +22,7 @@ export class HelperDashboardComponent implements OnInit {
   active: any;
   alert: boolean = false;
   currentTask: any;
+  volunteerID = JSON.parse(localStorage.getItem('user')!).uid;
 
   constructor(
     private router: Router,
@@ -38,7 +40,7 @@ export class HelperDashboardComponent implements OnInit {
 
   addToMyTasks(id: string | undefined) {
     this.tasks = []
-    this.clientDataService.update(id, false, true, false);
+    this.clientDataService.update(id, false, true, false, this.volunteerID);
     this.alert = true;
     this.router.navigate(['helper-dashboard/my_tasks'])
   }

@@ -94,7 +94,6 @@ export class ClientTaskFormComponent implements OnInit {
     task.date = Date.now();
     task.status = {active: true}
     task.id = uuid();
-    task.volunteerID = '';
     task.clientId = JSON.parse(localStorage.getItem('user')!).uid;
     this.clientDataService.sendTaskData(task);
     this.addTaskForm.reset();
