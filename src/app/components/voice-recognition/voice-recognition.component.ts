@@ -37,3 +37,4 @@ export class VoiceRecognitionComponent {
     this.running = true;
   }
 }
+
