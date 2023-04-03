@@ -4,16 +4,9 @@ import { tasks as data } from 'src/app/data/tasks';
 import { Router } from '@angular/router';
 import {
   AngularFirestore,
-  AngularFirestoreDocument,
 } from '@angular/fire/compat/firestore';
-import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { ClientDataService } from 'src/app/services/client-data.service';
 import { CTask } from 'src/app/models/client-tasks';
-import { CommonModule } from '@angular/common';
-import { updateDoc, doc } from '@firebase/firestore';
-import firebase from 'firebase/compat/app'
-import { merge } from 'rxjs';
-
 
 @Component({
   selector: 'app-helper-dashboard',
@@ -24,7 +17,6 @@ export class HelperDashboardComponent implements OnInit {
   imgUrl = './assets/myAcc4.png';
   disabled = false;
   myQrCode: boolean = false;
-  /*   tasks: VTask[] = data; */
   tasks: CTask[] = [];
   active: any;
   alert: boolean = false;
@@ -45,21 +37,13 @@ export class HelperDashboardComponent implements OnInit {
   }
 
   addToMyTasks(id: string | undefined) {
-    // this.clientDataService.getTask(id!).then((res: any) => {
-    //   this.currentTask = res;
-    //   console.log(this.currentTask);
-    // })
-    this.clientDataService.update(id, false, true);
+    this.tasks = []
+    this.clientDataService.update(id, false, true, false);
     this.alert = true;
-    // this.router.navigate(['helper-dashboard/my_tasks'])
-    /* add ngClass to this tasl on hdashbord - hidden*/
+    this.router.navigate(['helper-dashboard/my_tasks'])
   }
 
   closeAlert() {
     this.alert = false;
   }
 }
-
-/* this.user = this.userDataService.getCurrentUser().subscribe((data) => {
-  console.log(data);
-  return this.user */

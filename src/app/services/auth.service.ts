@@ -15,6 +15,7 @@ export class AuthService {
   userLoggedIn: boolean;
   userData: any;
   user: any;
+  public volunteerID: string;
   canActivateProtectedRoutes$: Observable<boolean> = new Observable(observer => {
     // Your logic to emit boolean values to the observer
     observer.next(true);

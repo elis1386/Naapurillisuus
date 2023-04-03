@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { user } from '@angular/fire/auth';
 import { checkLg } from 'ngx-bootstrap-icons';
 import { CTask } from 'src/app/models/client-tasks';
 import { ClientDataService } from 'src/app/services/client-data.service';
@@ -13,6 +14,7 @@ export class HelpersTasksComponent implements OnInit {
   manageTask: boolean = false;
   tasks: CTask[] = [];
   titleCancel: string = 'Do you really want to cancel this task?';
+  currentUserId: any;
 
   constructor(public modalTasksService: ModalTasksService, public clientDataService: ClientDataService) {}
   cancel() {
@@ -28,6 +30,7 @@ export class HelpersTasksComponent implements OnInit {
   ngOnInit() {
     
     this.clientDataService.getAllTasks().subscribe((data) => {
+    this.tasks = []
       data.forEach(task => {
         if(task.status.inProgress){
           this.tasks.push(task)
