@@ -10,6 +10,7 @@ import firebase from 'firebase/compat/app'
 })
 export class ClientDataService {
 
+
   tasks: Observable<CTask[]>;
   tasksCollection: AngularFirestoreCollection<CTask>;
   currentTask: any;
@@ -45,7 +46,6 @@ export class ClientDataService {
       .catch((error) => {
         console.log("Error getting document:", error);
       });
-
   } 
 
   update(id?: string, active: boolean = false, inProgress: boolean = false, done: boolean = false){

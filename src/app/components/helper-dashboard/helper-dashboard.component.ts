@@ -52,6 +52,7 @@ export class HelperDashboardComponent implements OnInit {
     this.clientDataService.update(id, false, true);
     this.alert = true;
     // this.router.navigate(['helper-dashboard/my_tasks'])
+    console.log(currentTask)
     /* add ngClass to this tasl on hdashbord - hidden*/
   }
 

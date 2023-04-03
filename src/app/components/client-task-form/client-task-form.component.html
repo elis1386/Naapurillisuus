@@ -3,10 +3,9 @@
     class="modal-view d-flex flex-column"
     *ngIf="modalService.isVisible$ | async"
   >
-    <h5 class="align-self-center fs-4"> {{ currentClient.firstName }} </h5>
+    <h5 class="align-self-center fs-4">{{ currentClient.firstName }}</h5>
     <p class="title align-self-center align-self-center">
       Your request is sent. Please, wait for your volunteer to help you!
-
     </p>
 
     <div class="gap-4 mt-4 d-flex justify-content-center">
@@ -95,6 +94,7 @@
               (click)="showHints(text)"
               id="text"
               class="btn btn-hint rounded-pill"
+              >{{ text }}</a
             >
             </a>
             </article>
