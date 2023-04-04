@@ -55,22 +55,9 @@ export class ClientTaskFormComponent implements OnInit {
       });
     });
 
-
-    this.textTemplate = [
-      'Hello. ',
-      'I feel bad.',
-      'Could you please to help me with my problem? ',
-      'Take my dog for a walk for 20 min.',
-     /*  'Buy some food in nearest shop. ',
-      'Help me with moving. ',
-      'Ihave some problem with PC. ', */
-
-      
-    ];
      this.textTemplate = [
-      'Hello. ',
+      'Hello. Could you help me with my problem? ',
       'I feel bad.',
-      'Could you please to help me with my problem? ',
       'Take my dog for a walk for ',
       'Do some shopping for me in nearest shop.',
       'Help me with updating my PC',

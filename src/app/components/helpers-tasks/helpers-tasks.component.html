@@ -1,6 +1,7 @@
 <section class="container">
   <section class="my_tasks">
     <ngb-accordion
+    [closeOthers]="true"
       #a="ngbAccordion"
       activeIds="custom-panel-1"
       *ngFor="let task of tasks"
@@ -48,10 +49,11 @@
             >
               <div>
                 <button
-                  class="btn btn-secondary small-btn opacity-75 me-2"
+                  class="btn btn-secondary opacity-75 me-2"
                   (click)="canceledTask(task.id)"
                 >
-                  Cancel the task
+                  <i class="bi bi-x"></i>
+                  Cancel
                 </button>
                 <app-modal-tasks
                   *ngIf="modalTasksService.isVisible$ | async"
@@ -59,10 +61,11 @@
               </div>
 
               <button
-                class="btn btn-success opacity-75 small-btn"
+                class="btn btn-success opacity-75"
                 (click)="completedTask(task.id)"
               >
-                Complete the task
+                <i class="bi bi-check"></i>
+                Complete
               </button>
             </article>
           </article>

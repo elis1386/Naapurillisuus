@@ -23,6 +23,7 @@ import { merge } from 'rxjs';
 export class HelperDashboardComponent implements OnInit {
   imgUrl = './assets/myAcc4.png';
   disabled = false;
+  isOpen = false
   myQrCode: boolean = false;
   /*   tasks: VTask[] = data; */
   tasks: CTask[] = [];

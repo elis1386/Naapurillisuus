@@ -1,6 +1,6 @@
 <section class="container">
-    <section class="client_tasks">
-       <!--  <ngb-accordion #acc="ngbAccordion" activeIds="config-panel-one">
+  <section class="client_tasks">
+    <!--  <ngb-accordion #acc="ngbAccordion" activeIds="config-panel-one">
           <ngb-panel title="Help with PC" id="helpPC">
             <ng-template ngbPanelHeader let-opened="opened">
               <button ngbPanelToggle class="accordion-button other">
@@ -25,46 +25,55 @@
             </ng-template>
           </ngb-panel>
         </ngb-accordion> -->
-        <ngb-accordion
-        #a="ngbAccordion"
-        activeIds="custom-panel-1"
-        *ngFor="let task of myTasks"
-      >
-        <ngb-panel id="custom-panel-1">
-          <ng-template ngbPanelHeader let-opened="opened">
-            <button
-              ngbPanelToggle
-              class="accordion-button"
-              [ngClass]="{
-                shopping: task.title == 'Shopping',
-                urgently: task.title == 'Urgently',
-                pets: task.title == 'Pets',
-                other: task.title == 'Others',
-                moving: task.title == 'Moving'
-              }"
+    <ngb-accordion
+      #a="ngbAccordion"
+      activeIds="custom-panel-1"
+      *ngFor="let task of myTasks"
+    >
+      <ngb-panel id="custom-panel-1">
+        <ng-template ngbPanelHeader let-opened="opened">
+          <button
+            ngbPanelToggle
+            class="accordion-button"
+            [ngClass]="{
+              shopping: task.title == 'Shopping',
+              urgently: task.title == 'Urgently',
+              pets: task.title == 'Pets',
+              other: task.title == 'Others',
+              moving: task.title == 'Moving'
+            }"
+          >
+            <span
+              ><b> {{ task.title }}</b> &nbsp;{{
+                task.date | date : "dd/MM/yyyy"
+              }}</span
             >
-              <span
-                ><b> {{ task.title }}</b> &nbsp;{{ task.date | date: 'dd/MM/yyyy' }}</span
-              >
-            </button>
-          </ng-template>
-          <ng-template ngbPanelContent>
-            <article class="accordion-body">
-              <strong>{{ task.title }}</strong>
-              <p>
-                {{ task.description }}
-              </p>
-            </article>
-            <article>
-              <a class="show" (click)="isVisible = !isVisible">Show your  volunteer</a>
-              <app-volunteer-card-f-client *ngIf="isVisible"></app-volunteer-card-f-client>
-            </article>
-           
-          </ng-template>
-        </ngb-panel>
-      </ngb-accordion>
-      </section>
+          </button>
+        </ng-template>
+
+        <ng-template ngbPanelContent>
+          <div class="d-flex justify-content-between">
+          <article class="accordion-body">
+            <strong>{{ task.title }}</strong>
+            <p>
+              {{ task.description }}
+            </p>
+          </article>
+          <div class="delete-btn">
+          <button type="button" class="btn btn-danger opacity-75">delete task</button>
+        </div>
+        </div>
+          <article>
+            <a class="show" (click)="isVisible = !isVisible"
+              >Show your volunteer</a
+            >
+            <app-volunteer-card-f-client
+              *ngIf="isVisible"
+            ></app-volunteer-card-f-client>
+          </article>
+         
+        </ng-template>
+      </ngb-panel>
+    </ngb-accordion>
+  </section>
 </section>
-
-
-

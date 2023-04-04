@@ -26,6 +26,10 @@
   color: var(--brown);
   background-color: var(--others);
 }
+.moving {
+  color: var(--brown);
+  background-color: var(--moving);
+}
 .disabled {
   color: var(--brown);
   background-color: #dddddd;
@@ -34,7 +38,7 @@
   font-size: 1rem;
   color: var(--brown);
   background-color: #ffd453;
-  width: 20%;
+  width: 30%;
 }
 .btn-take {
   color: white;
@@ -75,13 +79,38 @@
 .actions {
   text-decoration: none;
 }
+.btn-secondary {
+  background-color: white;
+  color: rgb(179, 21, 21);
+  border: none;
+  font-size: 1rem;
+}
+.btn-success {
+  background-color: white;
+  color: #1b9c39;
+  border: none;
+  font-size: 1rem;
 
+}
+.bi-check {
+  font-size: 1rem;
+  color: #1b9c39;
+  font-size: 1.2rem;
 
+}
+.bi-x {
+  font-size: 1rem;
+  color: rgb(179, 21, 21);
+  font-size: 1.2rem;
+}
 @media only screen and (max-width: 768px) {
-    .modal-view {
-      left: 15%;
-      width: 70%;
-    }
+  .modal-view {
+    left: 15%;
+    width: 70%;
+  }
+  .btn-send {
+    width: 30%;
+  }
 }
 @media only screen and (max-width: 425px) {
   .task_list,

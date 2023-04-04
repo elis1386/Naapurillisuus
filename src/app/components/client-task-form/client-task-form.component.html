@@ -20,27 +20,25 @@
   </section>
   <section class="task-form">
     <article class="personalinfo">
-      <p><strong>Your Information</strong></p>
-      <p class="info-text">
-        {{ currentClient.firstName }} <br />
+      <p class="title">Your information</p>
+      <p class="info-text mb-2">
+        {{ currentClient.firstName }}
         {{ currentClient.lastName }}
       </p>
-      <a href="">Edit Information</a>
+      <a href="">edit information</a>
     </article>
-
+    <hr class="line" />
     <!-- Address and change address -->
 
     <article class="address">
-      <p><strong>Your Address</strong></p>
-      <p class="info-text">
-        {{ currentClient.zip }} <br />
-        {{ currentClient.city }}, {{ currentClient.address }}
-      </p>
-      <a href="">Edit Information</a>
+      <p class="title">Your address</p>
+      <p class="info-text">{{ currentClient.address }},</p>
+      <p class="info-text mb-2">{{ currentClient.city }} {{ currentClient.zip }}</p>
+      <a href="">edit information</a>
     </article>
-
+    <hr class="line" />
     <!-- task form -->
-    <form [formGroup]="addTaskForm" (ngSubmit)="addToClientTask()">
+    <form [formGroup]="addTaskForm" (ngSubmit)="addToClientTask()" class="mt-4">
       <article class="my-3 helptype col-6">
         <p><strong>Type of help:</strong></p>
         <select class="form-select" required="" formControlName="title">
@@ -88,7 +86,7 @@
       <section class="comment">
         <article>
           <h6>Comments:</h6>
-          <article class="d-flex flex-wrap gap-2">
+          <article class="d-flex flex-wrap gap-2 mb-2">
             <a
               *ngFor="let text of textTemplate"
               (click)="showHints(text)"
@@ -96,7 +94,7 @@
               class="btn btn-hint rounded-pill"
               >{{ text }}</a
             >
-            </article>
+          </article>
           <textarea
             [(ngModel)]="selectedText"
             class="form-control"
