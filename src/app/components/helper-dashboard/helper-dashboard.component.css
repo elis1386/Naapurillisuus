@@ -2,7 +2,6 @@
   margin: 0 auto;
   padding: 0;
 }
-
 .task_list,
 .my_tasks,
 .done,
@@ -10,7 +9,7 @@
   margin: 2rem;
   padding: 0;
 }
-.alert{
+.alert {
   margin: 2rem;
 }
 .urgently {
@@ -71,12 +70,12 @@
 }
 .btnShow_id {
   width: 50%;
-  background-color: var( --clients-btns);
+  background-color: var(--clients-btns);
 }
 #qrcode {
-  width:160px;
-  height:160px;
-  margin-top:15px;
+  width: 160px;
+  height: 160px;
+  margin-top: 15px;
   text-align: center;
 }
 
@@ -89,10 +88,10 @@
   .nav {
     margin: 0.5em;
   }
-  .nav-link{
+  .nav-link {
     font-size: 1rem;
   }
-  .card-img{
+  .card-img {
     width: 380px;
     border-radius: 1rem;
     margin-bottom: 1rem;
@@ -104,10 +103,10 @@
   .btnShow_id {
     width: 100%;
   }
-  .alert{
-    margin: .5em;
+  .alert {
+    margin: 0.5em;
   }
-  .alert-text{
+  .alert-text {
     margin-bottom: 0;
   }
 }
@@ -128,9 +127,8 @@
     width: 80%;
     margin: auto;
   }
-  .alert-text{
+  .alert-text {
     margin-bottom: 0;
-    font-size: .8em;
+    font-size: 0.8em;
   }
-  
 }

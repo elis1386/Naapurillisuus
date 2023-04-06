@@ -1,18 +1,17 @@
-import { Component, Injectable, Input, OnInit } from '@angular/core';
+import { Component,Input, OnInit } from '@angular/core';
 import { AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 import { User } from 'src/app/models/users';
 import { UserDataService } from 'src/app/services/user-data.service';
 import {
   FormControl,
   FormGroup,
-  FormsModule,
   Validators,
 } from '@angular/forms';
 import { ClientDataService } from 'src/app/services/client-data.service';
 import { CTask } from 'src/app/models/client-tasks';
 import { ModalService } from 'src/app/services/modal.service';
 
-import { v4 as uuid} from 'uuid';
+import { v4 as uuid } from 'uuid';
 
 @Component({
   selector: 'app-client-task-form',
@@ -30,6 +29,7 @@ export class ClientTaskFormComponent implements OnInit {
   tasksCollection: AngularFirestoreCollection<CTask>;
   textTemplate: string[];
   selectedText: string;
+  qrData: string;
 
   constructor(
     public userDataService: UserDataService,
@@ -46,22 +46,17 @@ export class ClientTaskFormComponent implements OnInit {
     });
 
     let loggedUser = JSON.parse(localStorage.getItem('user')!);
-    this.userDataService.getAllUserData().subscribe((users) => {
-      users.forEach((user) => {
-        if (user.uid === loggedUser['uid']) {
-          this.currentClient = user;
-        }
-        return this.currentClient;
-      });
-    });
+    this.currentClient = loggedUser;
+    this.qrData = this.currentClient.firstName + this.currentClient.lastName;
+    console.log(this.currentClient);
 
-     this.textTemplate = [
+    this.textTemplate = [
       'Hello. Could you help me with my problem? ',
       'I feel bad.',
       'Take my dog for a walk for ',
       'Do some shopping for me in nearest shop.',
       'Help me with updating my PC',
-    ]; 
+    ];
     this.selectedText = '';
   }
 
@@ -79,7 +74,7 @@ export class ClientTaskFormComponent implements OnInit {
     }
     let task = this.addTaskForm.value;
     task.date = Date.now();
-    task.status = {active: true}
+    task.status = { active: true };
     task.id = uuid();
     task.clientId = JSON.parse(localStorage.getItem('user')!).uid;
     this.clientDataService.sendTaskData(task);

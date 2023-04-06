@@ -20,10 +20,11 @@
   color: var(--brown);
   background-color: var(--others);
 }
-.disabled {
+.moving {
   color: var(--brown);
-  background-color: #dddddd;
+  background-color: var(--moving);
 }
+
 
 .accordion-button{
   padding: 1.8rem;

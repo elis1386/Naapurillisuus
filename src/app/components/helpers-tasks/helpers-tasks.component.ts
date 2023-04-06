@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { checkLg } from 'ngx-bootstrap-icons';
 import { CTask } from 'src/app/models/client-tasks';
 import { ClientDataService } from 'src/app/services/client-data.service';
 import { ModalTasksService } from 'src/app/services/modal-tasks.service';

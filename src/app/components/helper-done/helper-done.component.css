@@ -2,7 +2,6 @@
   margin: 0 auto;
   padding: 0;
 }
-
 .task_list,
 .my_tasks,
 .done,
@@ -72,11 +71,6 @@
   color: #fae9b6;
   font-size: 1.5rem;
 }
-/* .bi-star-fill:hover {
-  color: #ffd453;
-  cursor: pointer;
-  text-shadow: 1px 1px #c60;
-} */
 .isChecked:hover {
   color: #ffd453;
 }
