@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { user } from '@angular/fire/auth';
-import { checkLg } from 'ngx-bootstrap-icons';
 import { CTask } from 'src/app/models/client-tasks';
 import { ClientDataService } from 'src/app/services/client-data.service';
 import { ModalTasksService } from 'src/app/services/modal-tasks.service';
@@ -27,6 +25,7 @@ export class HelpersTasksComponent implements OnInit {
     this.modalTasksService.close();
   }
 
+
   ngOnInit() {
   this.currentUserId = JSON.parse(localStorage.getItem('user')!).uid;
     this.clientDataService.getAllTasks().subscribe((data) => {
@@ -38,7 +37,7 @@ export class HelpersTasksComponent implements OnInit {
     });
   })
   }
-  completedTask(id?:string) {
+  completedTask(id?: string) {
     this.modalTasksService.open();
     console.log('modal should be open');
     this.clientDataService.update(id, false, false, true)

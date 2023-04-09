@@ -1,9 +1,18 @@
-
+.container {
+  margin: 0 auto;
+  padding: 0;
+}
 
 .client_tasks, .donetasks {
     margin: 2rem;
     padding: 0;
 }
+a{
+  text-decoration: none;
+  font-size: 1rem;
+  color: #4d92f9;
+}
+
 
 .urgently {
     color: var(--brown);
@@ -25,28 +34,19 @@
     color: var(--brown);
     background-color: var(--moving);
   }
-  .disabled {
-    color: var(--brown);
-    background-color: #dddddd;
-  }
 
 .accordion-button{
     padding: 1.8rem;
 }
+.accordion-body{
+  padding: 1rem 0 .5em 0;
+  width: 60%;
 
-.btn {
-  background-color: var(--main-client);
-  border: var(--main-client);
-  color: white;
-  margin-top: 1rem;
-  padding: 0.5em;
+}
+.delete-btn{
   align-self: center;
 }
-.btn:hover {
-  background-color: white;
-  border: 1px solid var(--main-client);
-  color: var(--main-client);
-}
+
 
 @media only screen and (max-width: 425px) {
     .client_tasks{

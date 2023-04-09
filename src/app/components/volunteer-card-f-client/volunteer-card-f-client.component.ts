@@ -3,9 +3,6 @@ import { ModalService } from 'src/app/services/modal.service';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 
-import { User } from 'src/app/models/users';
-import { UserDataService } from 'src/app/services/user-data.service';
-
 @Component({
   selector: 'app-volunteer-card-f-client',
   templateUrl: './volunteer-card-f-client.component.html',
@@ -18,8 +15,7 @@ export class VolunteerCardFClientComponent implements OnInit{
   currentUser: any;
   qrData: any;
 
-  constructor(public modalService: ModalService, private db: AngularFirestore,
-    private afAuth: AngularFireAuth){}
+  constructor(public modalService: ModalService){}
 
   ngOnInit(): void {
     let loggedUser = JSON.parse(localStorage.getItem('user')!);

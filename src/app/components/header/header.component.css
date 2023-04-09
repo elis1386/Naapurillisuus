@@ -39,136 +39,45 @@ body {
 /* New Media */
 
 @media screen and (max-width: 768px) {
-  .container{
+  .container {
     max-width: 100%;
   }
-  .logo img{
+  .logo img {
     width: 40%;
   }
 }
 
 @media screen and (max-width: 425px) {
-  .container{
+  .container {
     max-width: 100%;
   }
-  .logo img{
+  .logo img {
     width: 70%;
   }
-  .btn{
+  .btn {
     margin: 0 1rem 0 0;
     font-size: 1rem;
   }
 }
 @media screen and (max-width: 425px) {
-  .container{
+  .container {
     max-width: 100%;
   }
-  .logo img{
+  .logo img {
     width: 70%;
   }
-  .btn{
-    margin-right: .5em;
+  .btn {
+    margin-right: 0.5em;
   }
 }
 @media screen and (max-width: 320px) {
-  .container{
+  .container {
     max-width: 100%;
   }
-  .logo img{
+  .logo img {
     width: 80%;
   }
-  .btn{
-    padding: 0.4em .7em;
-  }
- 
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* @media screen  and (max-width: 1024px) {
   .btn {
-    width: 35%;
-    text-align: end;
-    margin: 1rem;
+    padding: 0.4em 0.7em;
   }
 }
-
-@media screen and (max-width: 768px) {
-  .btn {
-    width: 41%;
-  }
-  .sign_in_main {
-    width: 33%;
-  }
-}
-
-@media screen and (max-width: 425px) {
-  .logo {
-    width: 60%;
-  }
-  .btn {
-    width: 73%;
-  }
-  .sign_in_main {
-    width: 36%;
-  }
-}
-@media screen and (max-width: 375px) {
-  .logo {
-    width: 65%;
-  }
-  .sign_in_main {
-    width: 35%;
-  }
-  .btn {
-    width: 78%;
-  }
-}
-@media screen and (max-width: 320px) {
-  .logo img {
-    width: 35%;
-  }
-  .sign_in_main {
-    width: 47%;
-  }
-  .btn {
-    width: 70%;
-    font-size: 1rem;
-  }
-} */
-
-/* @media screen and (max-width: 500px) {
-  .logo img {
-    width: 50%;
-  }
-  .btn {
-    width: auto;
-  }
-}
-@media screen and (max-width: 600px) {
-  .logo img {
-    width: 50%;
-  }
-  .btn {
-    width: auto;
-  }
-}
-@media screen and (max-width: 700px) {
-  .logo img {
-    width: 50%;
-  }
-  .btn {
-    width: auto;
-  }
-} */
