@@ -1,17 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@300;400&display=swap");
 
 .signInForm {
-  font-size: 62,5%;
+  font-size: 62, 5%;
   font-family: "Source serif Pro";
   margin: 0 auto;
   padding: 0;
   width: 30%;
 }
-
 .info {
   margin: 1rem;
 }
-
 .btn {
   width: 90%;
   margin-bottom: 1rem;
@@ -19,18 +17,15 @@
   background-color: var(--main-color);
   border: var(--main-color);
 }
-
 .btn:hover {
   color: white;
   background-color: var(--main-color);
 }
-
 .textline:after,
 .textline:before {
   content: "\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0";
   text-decoration: line-through;
 }
-
 .banklogin {
   width: 90%;
   margin-top: 2rem;
@@ -44,12 +39,11 @@
     width: 60%;
   }
 }
-
 @media only screen and (max-width: 425px) {
   .signInForm {
     width: 90%;
   }
-  .banklogin{
+  .banklogin {
     font-size: 1rem;
   }
 }

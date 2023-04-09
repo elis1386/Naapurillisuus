@@ -12,8 +12,13 @@
   margin: 1rem 0;
   padding: 0;
 }
-.info-text{
+.info-text {
   font-size: 1.2rem;
+  font-weight: 500;
+  margin-bottom: 0;
+}
+.line {
+  color: grey;
 }
 
 .form-check-input:checked {
@@ -21,23 +26,36 @@
   border-color: var(--main-client);
 }
 
-.today_btn {
-  width: 20%;
-  padding: 1rem;
-  color: white;
-  border: 1px solid var(--main-client);
-  background-color: var(--main-client);
-  align-self: center;
-}
 .save_btn {
   width: 25%;
   margin: 1rem;
-  padding: 1rem;
+  padding: 0.5em;
   color: white;
   border: 1px solid var(--main-client);
   background-color: var(--main-client);
   align-self: center;
 }
+a {
+  text-decoration: none;
+  font-size: 1rem;
+  color: #4d92f9;
+}
+.title {
+  font-size: 1.2rem;
+  color: var(--brown);
+}
+.btn-hint {
+  background-color: #ffeddd;
+  color: var(--brown);
+  margin: 0 0.125em 0.333em 0;
+  text-decoration: none;
+  padding: 0.5em;
+}
+.btn-hint:hover {
+  background-color: var(--main-client);
+  color: white;
+}
+/* MODAL */
 .modal-view {
   width: 40%;
   height: auto;
@@ -53,21 +71,6 @@
 .modalBtn {
   background-color: var(--main-color);
   border: none;
-  color: white;
-}
-.title {
-  font-size: 1rem;
-  margin: 0.5em;
-}
-.btn-hint {
-  background-color: #ffeddd;
-  color: var(--brown);
-  margin: 0 0.125em 0.333em 0;
-  text-decoration: none;
-  padding: 0.5em;
-}
-.btn-hint:hover {
-  background-color: var(--main-client);
   color: white;
 }
 @media only screen and (max-width: 768px) {

@@ -17,6 +17,7 @@ import { User } from '@angular/fire/auth';
 export class HelperDashboardComponent implements OnInit {
   imgUrl = './assets/myAcc4.png';
   disabled = false;
+  isOpen = false;
   myQrCode: boolean = false;
   tasks: CTask[] = [];
   active: any;
@@ -24,11 +25,7 @@ export class HelperDashboardComponent implements OnInit {
   currentTask: any;
   volunteerID = JSON.parse(localStorage.getItem('user')!).uid;
 
-  constructor(
-    private router: Router,
-    private db: AngularFirestore,
-    public clientDataService: ClientDataService,
-  ) {}
+  constructor(public clientDataService: ClientDataService, private router: Router) {}
 
   ngOnInit() {
     this.clientDataService.getAllTasks().subscribe((data) => {

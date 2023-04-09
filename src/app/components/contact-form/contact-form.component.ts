@@ -32,14 +32,13 @@ export class ContactFormComponent implements OnInit {
     });
 
     this.textTemplate = [
-      'Good daytime',
-      'Could you please to help me?',
+      'Hello. Could you please to help me?',
       'I can not do task.',
-      'I always got a error message.',
-      'I am not satisfied your service.',
-      'It works bad.',
-      'I am so glad to use your app.',
+      'It does not work correctly.',
       'It is reallu helpfull.',
+      'I always got an error.',
+      'I am not satisfied your service.',
+      'I am so glad to use your app.',
     ];
     this.selectedText = '';
   }

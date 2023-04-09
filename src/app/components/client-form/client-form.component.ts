@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { throwError } from 'rxjs';
@@ -15,7 +14,6 @@ export class ClientFormComponent {
   firebaseErrorMessage: string;
 
   constructor(
-    private afAuth: AngularFireAuth,
     private authService: AuthService,
     private router: Router,
     

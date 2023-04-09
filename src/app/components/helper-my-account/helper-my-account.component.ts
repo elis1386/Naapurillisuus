@@ -1,10 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
-import { Observable, of } from 'rxjs';
-import { User } from 'src/app/models/users';
-import { UserDataService } from 'src/app/services/user-data.service';
 
 @Component({
   selector: 'app-helper-my-account',
@@ -22,8 +17,6 @@ export class HelperMyAccountComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private db: AngularFirestore,
-    private afAuth: AngularFireAuth
   ) {}
 
   ngOnInit(): void {
@@ -32,11 +25,6 @@ export class HelperMyAccountComponent implements OnInit {
        this.qrData = this.currentUser.firstName + this.currentUser.lastName
       console.log(this.currentUser);
     };
-  
-  /* this.user = this.userDataService.getCurrentUser().subscribe((data) => {
-    console.log(data);
-    return this.user
-    }); */
 
   askHelp() {
     this.router.navigate(['client-task-form']);
