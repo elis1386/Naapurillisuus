@@ -52,11 +52,4 @@ export class ClientDataService {
     })
   }
 
-  deleteTask(id:string) {
-    firebase.firestore().collection('tasks')
-    .doc(id).delete()
-    .catch(err => {
-      console.log(err)
-    })
-  }
 }

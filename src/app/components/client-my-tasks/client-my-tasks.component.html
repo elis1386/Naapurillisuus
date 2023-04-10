@@ -54,9 +54,9 @@
           </article>
 
           <!-- Modal window to delete -->
-          <section
+          <section class="modal-screen" *ngIf="modalService.isVisible$ | async">
+          <article
             class="modal-view d-flex flex-column"
-            *ngIf="modalService.isVisible$ | async"
           >
             <h5 class="align-self-center fs-4">
               {{ currentClient.firstName }}
@@ -68,20 +68,21 @@
             <div class="gap-4 mt-4 d-flex justify-content-center">
               <button
                 type="button"
-                class="btn btn-outline modalBtn px-4"
+                class="btn btn-outline modalBtnYes px-4"
                 (click)="deleteTask(task.id!)"
               >
                 Yes
               </button>
               <button
                 type="button"
-                class="btn btn-outline modalBtn px-4"
+                class="btn btn-outline modalBtnNo px-4"
                 (click)="modalService.done()"
               >
                 No
               </button>
             </div>
-          </section>
+          </article>
+        </section>
         </ng-template>
       </ngb-panel>
     </ngb-accordion>
