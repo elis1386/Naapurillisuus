@@ -47,6 +47,25 @@ a{
   align-self: center;
 }
 
+/* MODAL */
+.modal-view {
+  width: 40%;
+  height: auto;
+  position: absolute;
+  top: 30%;
+  left: 30%;
+  border-radius: 1rem;
+  background-color: white;
+  margin: 1rem;
+  padding: 1rem;
+  border: 1px solid rgb(160, 157, 157);
+}
+.modalBtn {
+  background-color: var(--main-color);
+  border: none;
+  color: white;
+}
+
 
 @media only screen and (max-width: 425px) {
     .client_tasks{
