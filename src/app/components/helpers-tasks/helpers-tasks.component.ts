@@ -12,6 +12,7 @@ export class HelpersTasksComponent implements OnInit {
   manageTask: boolean = false;
   tasks: CTask[] = [];
   titleCancel: string = 'Do you really want to cancel this task?';
+  currentUserId: any;
 
   constructor(public modalTasksService: ModalTasksService, public clientDataService: ClientDataService) {}
   cancel() {
@@ -24,17 +25,19 @@ export class HelpersTasksComponent implements OnInit {
     this.modalTasksService.close();
   }
 
+
   ngOnInit() {
-    
+  this.currentUserId = JSON.parse(localStorage.getItem('user')!).uid;
     this.clientDataService.getAllTasks().subscribe((data) => {
+    this.tasks = []
       data.forEach(task => {
-        if(task.status.inProgress){
+        if(task.status.inProgress && task.volunteerID === this.currentUserId){
           this.tasks.push(task)
         }
     });
   })
   }
-  completedTask(id?:string) {
+  completedTask(id?: string) {
     this.modalTasksService.open();
     console.log('modal should be open');
     this.clientDataService.update(id, false, false, true)

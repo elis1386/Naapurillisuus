@@ -8,6 +8,7 @@ export interface CTask{
     date: string
     class: string
     clientId: string
+    volunteerID?: string
     status: {
       active: boolean
       inProgress: boolean
