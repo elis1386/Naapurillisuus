@@ -57,7 +57,6 @@ export class AuthService {
         firstName: user.firstName,
         lastName: user.lastName,
         email: emailLower,
-        password: user.password,
         address: user.address,
         city: user.city,
         zip: user.zip,
