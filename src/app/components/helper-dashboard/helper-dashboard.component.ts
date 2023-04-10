@@ -1,6 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { VTask } from 'src/app/models/vtasks';
+import { tasks as data } from 'src/app/data/tasks';
+import { Router } from '@angular/router';
+import {
+  AngularFirestore,
+} from '@angular/fire/compat/firestore';
 import { ClientDataService } from 'src/app/services/client-data.service';
 import { CTask } from 'src/app/models/client-tasks';
+import { User } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-helper-dashboard',
@@ -12,13 +19,13 @@ export class HelperDashboardComponent implements OnInit {
   disabled = false;
   isOpen = false;
   myQrCode: boolean = false;
-  /*   tasks: VTask[] = data; */
   tasks: CTask[] = [];
   active: any;
   alert: boolean = false;
   currentTask: any;
+  volunteerID = JSON.parse(localStorage.getItem('user')!).uid;
 
-  constructor(public clientDataService: ClientDataService) {}
+  constructor(public clientDataService: ClientDataService, private router: Router) {}
 
   ngOnInit() {
     this.clientDataService.getAllTasks().subscribe((data) => {
@@ -29,8 +36,10 @@ export class HelperDashboardComponent implements OnInit {
   }
 
   addToMyTasks(id: string | undefined) {
-    this.clientDataService.update(id, false, true);
+    this.tasks = []
+    this.clientDataService.update(id, false, true, false, this.volunteerID);
     this.alert = true;
+    this.router.navigate(['helper-dashboard/my_tasks'])
   }
 
   closeAlert() {

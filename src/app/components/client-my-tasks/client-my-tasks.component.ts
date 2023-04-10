@@ -20,7 +20,12 @@ export class ClientMyTasksComponent implements OnInit {
         if(clientId === task.clientId ){
           this.myTasks.push(task)
         }
-    });
-  })
-}
+      });
+    })
+  }
+
+deleteTask(id: string){
+  this.clientDatService.deleteTask(id)
+  this.myTasks = []
+  }
 }

@@ -6,7 +6,6 @@ export interface User{
   address: string;
   city: string;
   zip: string;
-  password: string;
   about?: string | null;
   role: string;
   phoneNumber?: string,
