@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
+import { CTask } from '../models/client-tasks';
+import { stringify } from 'uuid';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ModalService {
+  task: CTask;
 
   isVisible$ = new BehaviorSubject<boolean>(false);
 
@@ -16,15 +19,20 @@ export class ModalService {
     this.isVisible$.next(true);
     console.log('click');
   }
+
   close() {
     this.isVisible$.next(false);
     this.router.navigate([''])
   }
+  
   cancel() {
     this.isVisible$.next(false);
   }
   done() {
     this.isVisible$.next(false);
-    this.router.navigate(['/client-tasks/my-tasks'])
+    this.router.navigate(['/client-tasks/my-tasks']);
   }
+
+
+
 }
