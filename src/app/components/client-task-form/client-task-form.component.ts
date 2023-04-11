@@ -1,12 +1,8 @@
-import { Component,Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 import { User } from 'src/app/models/users';
 import { UserDataService } from 'src/app/services/user-data.service';
-import {
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ClientDataService } from 'src/app/services/client-data.service';
 import { CTask } from 'src/app/models/client-tasks';
 import { ModalService } from 'src/app/services/modal.service';

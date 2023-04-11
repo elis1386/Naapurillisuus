@@ -28,13 +28,22 @@
 
         <ng-template ngbPanelContent>
           <div class="d-flex justify-content-between">
-            <article class="accordion-body">
+            <article
+              class="accordion-body"
+              [ngStyle]="{
+                width: task.status.inProgress
+                  ? '100%'
+                  : task.status.active
+                  ? '60%'
+                  : null
+              }"
+            >
               <strong>{{ task.title }}</strong>
               <p>
                 {{ task.description }}
               </p>
             </article>
-            <div class="delete-btn">
+            <div class="delete-btn" *ngIf="task.status.active">
               <button
                 type="button"
                 class="btn btn-danger opacity-75"

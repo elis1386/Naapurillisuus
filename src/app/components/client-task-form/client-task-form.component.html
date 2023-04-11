@@ -1,25 +1,22 @@
 <section class="container">
   <section class="modal-screen" *ngIf="modalService.isVisible$ | async">
-  <article
-    class="modal-view d-flex flex-column"
-  >
-    <h5 class="align-self-center fs-4"> {{ currentClient.firstName }} </h5>
-    <p class="title align-self-center align-self-center">
-      Your request is sent. Please, wait for your volunteer to help you!
+    <article class="modal-view d-flex flex-column">
+      <h5 class="align-self-center fs-4">{{ currentClient.firstName }}</h5>
+      <p class="title align-self-center align-self-center">
+        Your request is sent. Please, wait for your volunteer to help you!
+      </p>
 
-    </p>
-
-    <div class="gap-4 mt-4 d-flex justify-content-center">
-      <button
-        type="button"
-        class="btn btn-outline modalBtn px-4"
-        (click)="modalService.done()"
-      >
-        Ok
-      </button>
-    </div>
-  </article>
-</section>
+      <div class="gap-4 mt-4 d-flex justify-content-center">
+        <button
+          type="button"
+          class="btn btn-outline modalBtn px-4"
+          (click)="modalService.done()"
+        >
+          Ok
+        </button>
+      </div>
+    </article>
+  </section>
   <section class="task-form">
     <article class="personalinfo">
       <p class="title">Your information</p>
@@ -35,7 +32,9 @@
     <article class="address">
       <p class="title">Your address</p>
       <p class="info-text">{{ currentClient.address }},</p>
-      <p class="info-text mb-2">{{ currentClient.city }} {{ currentClient.zip }}</p>
+      <p class="info-text mb-2">
+        {{ currentClient.city }} {{ currentClient.zip }}
+      </p>
       <a href="">edit information</a>
     </article>
     <hr class="line" />
@@ -95,9 +94,9 @@
               id="text"
               class="btn btn-hint rounded-pill"
             >
-            {{text}}
+              {{ text }}
             </a>
-            </article>
+          </article>
           <textarea
             [(ngModel)]="selectedText"
             class="form-control"
