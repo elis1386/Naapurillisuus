@@ -29,6 +29,7 @@ export class HelpersTasksComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.tasks = [];
     this.currentUserId = JSON.parse(localStorage.getItem('user')!).uid;
     this.clientDataService.getAllTasks().subscribe((data) => {
       this.tasks = [];
@@ -43,12 +44,14 @@ export class HelpersTasksComponent implements OnInit {
     let answer = confirm('Are you sure you have completed this task?');
     if (answer === true) {
       this.clientDataService.update(id, false, false, true);
+      this.tasks = [];
     }
   }
   canceledTask(id?: string) {
     let answer = confirm('Do you really want to cancel this task?');
     if (answer === true) {
       this.clientDataService.update(id, true, false);
+      this.tasks = [];
     }
   }
 }
