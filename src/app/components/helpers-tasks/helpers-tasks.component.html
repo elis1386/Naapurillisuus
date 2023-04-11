@@ -1,11 +1,14 @@
 <section class="container">
   <section class="my_tasks">
+    <p *ngIf="tasks.length == 0" class="empty-text">You have no tasks yet.</p>
     <ngb-accordion
     [closeOthers]="true"
       #a="ngbAccordion"
       activeIds="custom-panel-1"
       *ngFor="let task of tasks"
+      
     >
+ 
       <ngb-panel id="custom-panel-1">
         <ng-template ngbPanelHeader let-opened="opened">
           <button
