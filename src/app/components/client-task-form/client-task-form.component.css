@@ -84,7 +84,6 @@ a {
   color: white;
 }
 @media only screen and (max-width: 768px) {
-
   .modal-view {
     width: 85%;
     left: 5%;
@@ -96,7 +95,6 @@ a {
     }
     .modal-view {
       width: 90%;
-      top: 35%;
       left: 1%;
     }
     .task-form {
