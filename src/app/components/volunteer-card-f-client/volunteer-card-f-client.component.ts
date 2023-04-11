@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Type } from '@angular/core';
 import { ModalService } from 'src/app/services/modal.service';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { ClientDataService } from 'src/app/services/client-data.service';
 
 @Component({
   selector: 'app-volunteer-card-f-client',
@@ -11,22 +10,28 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 
 export class VolunteerCardFClientComponent implements OnInit{
-
-  currentUser: any;
+  @Input() value: any;
   qrData: any;
-
-  constructor(public modalService: ModalService){}
+  volunteerName: any;
+  volunteerDescription: any;
+  constructor(public modalService: ModalService, private clientDataService: ClientDataService){}
 
   ngOnInit(): void {
-    let loggedUser = JSON.parse(localStorage.getItem('user')!);
-       this.currentUser = loggedUser;
-       this.qrData = this.currentUser.firstName + this.currentUser.lastName
-      console.log(this.currentUser);
+    this.volunteerInfo(this.value);
   }
-
+  
   imgUrl = "https://source.unsplash.com/random/?user,face/300x202";
-
+  
   volunteerQR(){
     this.modalService.open()
+  }
+  
+  volunteerInfo(volunteerID: string){
+    this.clientDataService.getDataAboutUser(volunteerID).then(volunteer => {
+    let name = `${volunteer.firstName} ${volunteer.lastName}`;
+    this.volunteerName = name;
+    this.qrData = name;  //do not work correctly, show just last volunteer name
+    this.volunteerDescription = volunteer.about
+    }) 
   }
 }

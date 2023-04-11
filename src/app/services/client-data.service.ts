@@ -52,4 +52,11 @@ export class ClientDataService {
     })
   }
 
+  async getDataAboutUser(volunteerID: string): Promise<any>{
+    return firebase.firestore()
+    .collection('users')
+    .doc(`${volunteerID}`).get().then((user)=>{
+       return user.data()
+    })
+  }
 }

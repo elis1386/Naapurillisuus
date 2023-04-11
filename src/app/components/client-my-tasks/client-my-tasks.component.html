@@ -44,12 +44,13 @@
               </button>
             </div>
           </div>
-          <article>
+          <article *ngIf="task.status.inProgress">
             <a class="show" (click)="isVisible = !isVisible"
               >Show your volunteer</a
             >
             <app-volunteer-card-f-client
               *ngIf="isVisible"
+              [value]="task.volunteerID"
             ></app-volunteer-card-f-client>
           </article>
 

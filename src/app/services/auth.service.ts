@@ -65,6 +65,7 @@ export class AuthService {
         phoneNumber: user?.phone,
         photoURL: result.user?.photoURL, 
       }
+      localStorage.setItem('user', JSON.stringify(userModel))
       this.SetUserData(userModel)
     })
     .catch(error => {
