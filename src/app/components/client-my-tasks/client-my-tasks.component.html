@@ -28,16 +28,22 @@
 
         <ng-template ngbPanelContent>
           <div class="d-flex justify-content-between">
-          <article class="accordion-body">
-            <strong>{{ task.title }}</strong>
-            <p>
-              {{ task.description }}
-            </p>
-          </article>
-          <div class="delete-btn">
-          <button type="button" class="btn btn-danger opacity-75" (click)="deleteTask(task.id!)">delete task</button>
-        </div>
-        </div>
+            <article class="accordion-body">
+              <strong>{{ task.title }}</strong>
+              <p>
+                {{ task.description }}
+              </p>
+            </article>
+            <div class="delete-btn">
+              <button
+                type="button"
+                class="btn btn-danger opacity-75"
+                (click)="modalService.open()"
+              >
+                delete task
+              </button>
+            </div>
+          </div>
           <article *ngIf="task.status.inProgress">
             <a class="show" (click)="isVisible = !isVisible"
               >Show your volunteer</a
@@ -47,7 +53,37 @@
               [value]="task.volunteerID"
             ></app-volunteer-card-f-client>
           </article>
-         
+
+          <!-- Modal window to delete -->
+          <section class="modal-screen" *ngIf="modalService.isVisible$ | async">
+          <article
+            class="modal-view d-flex flex-column"
+          >
+            <h5 class="align-self-center fs-4">
+              {{ currentClient.firstName }}
+            </h5>
+            <p class="title align-self-center align-self-center">
+              Are you sure you want to delete this task?
+            </p>
+
+            <div class="gap-4 mt-4 d-flex justify-content-center">
+              <button
+                type="button"
+                class="btn btn-outline modalBtnYes px-4"
+                (click)="deleteTask(task.id!)"
+              >
+                Yes
+              </button>
+              <button
+                type="button"
+                class="btn btn-outline modalBtnNo px-4"
+                (click)="modalService.done()"
+              >
+                No
+              </button>
+            </div>
+          </article>
+        </section>
         </ng-template>
       </ngb-panel>
     </ngb-accordion>

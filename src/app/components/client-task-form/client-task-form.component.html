@@ -1,7 +1,7 @@
 <section class="container">
-  <section
+  <section class="modal-screen" *ngIf="modalService.isVisible$ | async">
+  <article
     class="modal-view d-flex flex-column"
-    *ngIf="modalService.isVisible$ | async"
   >
     <h5 class="align-self-center fs-4"> {{ currentClient.firstName }} </h5>
     <p class="title align-self-center align-self-center">
@@ -18,7 +18,8 @@
         Ok
       </button>
     </div>
-  </section>
+  </article>
+</section>
   <section class="task-form">
     <article class="personalinfo">
       <p class="title">Your information</p>
