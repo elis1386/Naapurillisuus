@@ -39,6 +39,9 @@ import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { ModalTasksComponent } from './components/modal-tasks/modal-tasks.component';
 import { VoiceRecognitionComponent } from './components/voice-recognition/voice-recognition.component';
     
+import { VolunteerCardFClientComponent } from './components/volunteer-card-f-client/volunteer-card-f-client.component';
+import { CallRequestComponent } from './components/call-request/call-request.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -62,7 +65,11 @@ import { VoiceRecognitionComponent } from './components/voice-recognition/voice-
     ClientTaskFormComponent,
     ChatComponent,
     ModalTasksComponent,
-    VoiceRecognitionComponent
+    VoiceRecognitionComponent,
+    ClientTaskFormComponent,
+    VolunteerCardFClientComponent,
+    CallRequestComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -82,6 +89,7 @@ import { VoiceRecognitionComponent } from './components/voice-recognition/voice-
     AngularFireStorageModule,
     AngularFirestoreModule,
     AngularFireAuthModule,
+    CommonModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

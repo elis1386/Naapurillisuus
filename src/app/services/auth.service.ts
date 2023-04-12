@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
 import { User } from '../models/users';
 import firebase from 'firebase/compat/app'
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -13,16 +14,19 @@ export class AuthService {
   userRef: AngularFirestoreCollection<User>;
   userLoggedIn: boolean;
   userData: any;
-  user: any
+  user: any;
+  canActivateProtectedRoutes$: Observable<boolean> = new Observable(observer => {
+    // Your logic to emit boolean values to the observer
+    observer.next(true);
+    observer.complete();
+  });
+
 
 
   constructor(private router: Router, private afAuth: AngularFireAuth, public afs: AngularFirestore) {
     this.afAuth.authState.subscribe((user)=> {
       this.userLoggedIn = false;
       if(user) {
-        this.userData = user;
-        localStorage.setItem('user', JSON.stringify(this.userData));
-        JSON.parse(localStorage.getItem('user')!);
         this.userLoggedIn = true
       }else{
         localStorage.setItem('user', 'null');
@@ -31,12 +35,8 @@ export class AuthService {
       }
     this.userRef = this.afs.collection<User>('users');
     });
-  // constructor(private router: Router, private afAuth: AngularFireAuth) {}
-
-  // ngOnInit() {
-    
-  //   };
   }
+
   setToken(token: string) {
     localStorage.setItem('token', token);
   }
@@ -56,7 +56,6 @@ export class AuthService {
         firstName: user.firstName,
         lastName: user.lastName,
         email: emailLower,
-        password: user.password,
         address: user.address,
         city: user.city,
         zip: user.zip,
@@ -65,6 +64,7 @@ export class AuthService {
         phoneNumber: user?.phone,
         photoURL: result.user?.photoURL, 
       }
+      localStorage.setItem('user', JSON.stringify(userModel))
       this.SetUserData(userModel)
     })
     .catch(error => {
@@ -106,8 +106,10 @@ export class AuthService {
     return firebase.firestore().collection('users').doc(firebase.auth().currentUser?.uid).get()
     .then((doc)=>{
       if (doc.exists){
-        console.log(doc.data())
+        console.log(doc.data());
         this.user = doc.data();
+        localStorage.setItem('user', JSON.stringify(doc.data()));
+        JSON.parse(localStorage.getItem('user')!);
       }
     })
     .catch((error) => {
@@ -123,10 +125,13 @@ export class AuthService {
     return this.user.role === 'client'
   }
 
+
   routing(){
       if(this.isVolunteer()){
+        localStorage.setItem('url', '/helper-dashboard');
         this.router.navigate(['/helper-dashboard']);
       }else if(this.isClient()){
+        localStorage.setItem('url', '/client-task-form');
         this.router.navigate(['/client-task-form']);
       }
   }

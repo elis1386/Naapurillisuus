@@ -2,7 +2,6 @@
   margin: 0 auto;
   padding: 0;
 }
-
 .task_list,
 .my_tasks,
 .done,
@@ -113,7 +112,7 @@
     font-size: 1rem;
   }
   .card-img {
-    width: 360px;
+    width: 340px;
     margin-bottom: 1rem;
   }
   .btn-send {

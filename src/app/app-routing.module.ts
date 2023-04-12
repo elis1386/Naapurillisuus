@@ -14,6 +14,8 @@ import { HelperMyAccountComponent } from './components/helper-my-account/helper-
 import { ClientMyTasksComponent } from './components/client-my-tasks/client-my-tasks.component';
 import { ClientDoneComponent } from './components/client-done/client-done.component';
 import { ClientTaskFormComponent } from './components/client-task-form/client-task-form.component';
+import { RoleGuard } from './services/role.guard';
+import { CallRequestComponent } from './components/call-request/call-request.component';
 
 const routes: Routes = [
   { path: '', component: MainScreenComponent },
@@ -21,21 +23,54 @@ const routes: Routes = [
   { path: 'helper-form', component: HelperFormComponent },
   { path: 'contact-form', component: ContactFormComponent },
   { path: 'client-form', component: ClientFormComponent },
+
   {
     path: 'helper-dashboard',
     component: HelperDashboardComponent,
-    canActivate: [AuthGuard],
+    canActivate: [AuthGuard, RoleGuard],
+    data: { role: 'volunteer' },
   },
-  { path: 'helper-dashboard/my_tasks', component: HelpersTasksComponent },
-  { path: 'helper-dashboard/done', component: HelperDoneComponent },
-  { path: 'helper-dashboard/my-account', component: HelperMyAccountComponent },
-  { path: 'client-task-form', component: ClientTaskFormComponent, canActivate: [AuthGuard]},
-
-  { path: 'client-tasks/my-tasks', component: ClientMyTasksComponent },
-  { path: 'client-tasks/done', component: ClientDoneComponent},
-
-
-
+  {
+    path: 'helper-dashboard/my_tasks',
+    component: HelpersTasksComponent,
+    canActivate: [AuthGuard, RoleGuard],
+    data: { role: 'volunteer' },
+  },
+  {
+    path: 'helper-dashboard/done',
+    component: HelperDoneComponent,
+    canActivate: [AuthGuard, RoleGuard],
+    data: { role: 'volunteer' },
+  },
+  {
+    path: 'helper-dashboard/my-account',
+    component: HelperMyAccountComponent,
+    canActivate: [AuthGuard, RoleGuard],
+    data: { role: 'volunteer' },
+  },
+  {
+    path: 'client-task-form',
+    component: ClientTaskFormComponent,
+    canActivate: [AuthGuard, RoleGuard],
+    data: { role: 'client' },
+  },
+  {
+    path: 'client-tasks/my-tasks',
+    component: ClientMyTasksComponent,
+    canActivate: [AuthGuard, RoleGuard],
+    data: { role: 'client' },
+  },
+  {
+    path: 'client-tasks/done',
+    component: ClientDoneComponent,
+    canActivate: [AuthGuard, RoleGuard],
+    data: { role: 'client' },
+  },
+  {
+    path: 'client-tasks/call',
+    component: CallRequestComponent,
+    data: { role: 'client' },
+  },
 ];
 
 @NgModule({

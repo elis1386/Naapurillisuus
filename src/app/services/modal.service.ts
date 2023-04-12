@@ -25,5 +25,6 @@ export class ModalService {
   }
   done() {
     this.isVisible$.next(false);
+    this.router.navigate(['/client-tasks/my-tasks'])
   }
 }

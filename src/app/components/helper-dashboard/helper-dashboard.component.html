@@ -1,5 +1,22 @@
 
 <section class="container">
+  <article
+    class="alert alert-secondary alert-dismissible"
+    role="alert"
+    *ngIf="alert"
+  >
+    <strong>Holy guacamole!</strong>&nbsp;
+    <p class="alert-text">
+      You can
+      <a
+        routerLink="/helper-dashboard/my_tasks"
+        class="alert-link text-decoration-none link-hover"
+        >&nbsp;check a new task&nbsp;
+      </a>
+      taken!
+    </p>
+    <button type="button" class="btn-close" (click)="closeAlert()"></button>
+  </article>
   <section class="task_list" ngbnavlink="task_list">
     <ngb-accordion
       #a="ngbAccordion"
@@ -7,19 +24,23 @@
       *ngFor="let task of tasks"
     >
       <ngb-panel id="custom-panel-1">
-        <ng-template ngbPanelHeader let-opened="opened">
+        <ng-template ngbPanelHeader>
           <button
+            aria-expanded="false"
             ngbPanelToggle
             class="accordion-button"
             [ngClass]="{
-              shopping: task.class == 'shopping',
-              urgently: task.class == 'urgently',
-              pets: task.class == 'pets',
-              other: task.class == 'others'
+              shopping: task.title == 'Shopping',
+              urgently: task.title == 'Urgently',
+              pets: task.title == 'Pets',
+              other: task.title == 'Others',
+              moving: task.title == 'Moving'
             }"
           >
             <span
-              ><b> {{ task.category }}</b> &nbsp;{{ task.date }}</span
+              ><b> {{ task.title }}</b> &nbsp;{{
+                task.date | date : "dd/MM/yyyy"
+              }}</span
             >
           </button>
         </ng-template>
@@ -30,7 +51,10 @@
               {{ task.description }}
             </p>
             <div class="d-flex justify-content-end">
-              <button class="btn btn-take btn-lg" (click)="addToMyTasks()">
+              <button
+                class="btn btn-take btn-lg"
+                (click)="addToMyTasks(task.id)"
+              >
                 I take
               </button>
             </div>

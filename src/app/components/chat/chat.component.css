@@ -2,13 +2,18 @@
   font-size: 1rem;
   color: var(--brown);
   background-color: #ffd453;
-  width: 20%;
+  width: 30%;
 }
 
 .actions {
   text-decoration: none;
 }
 
+@media only screen and (max-width: 768px) {
+  .btn-send {
+    width: 30%;
+  }
+}
 @media only screen and (max-width: 425px) {
   .btn-send {
     width: 80%;

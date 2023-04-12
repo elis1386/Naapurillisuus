@@ -1,3 +1,4 @@
+
 import { Component, Input, OnInit } from '@angular/core';
 import {
   ControlValueAccessor,
@@ -21,7 +22,6 @@ import {
   docData,
   collectionData,
 } from '@angular/fire/firestore';
-
 import { ContactUs } from 'src/app/models/contactUs';
 import { ContactUsService } from 'src/app/services/contact-us.service';
 import { ModalService } from 'src/app/services/modal.service';
@@ -34,10 +34,16 @@ import { ModalService } from 'src/app/services/modal.service';
 export class ContactFormComponent implements ControlValueAccessor {
   @Input() transcript: string = '';
 
+
+
+  form: any;
+
   contactUsForm: FormGroup;
   contactUsCollection: AngularFirestoreCollection<ContactUs>;
   allFeedback: any;
   title: string = 'Thanks for your submission.';
+  textTemplate: string[];
+  selectedText: string;
 
   constructor(
     public contactUsService: ContactUsService,
@@ -62,6 +68,22 @@ export class ContactFormComponent implements ControlValueAccessor {
     this.contactUsService.getAllFeedback().subscribe((data) => {
       console.log(data);
     });
+
+
+    this.textTemplate = [
+      'Hello. Could you please to help me?',
+      'I can not do task.',
+      'It does not work correctly.',
+      'It is reallu helpfull.',
+      'I always got an error.',
+      'I am not satisfied your service.',
+      'I am so glad to use your app.',
+    ];
+    this.selectedText = '';
+  }
+  showHints(text: string) {
+    this.selectedText += text + ' ';
+    console.log('click');
   }
 
   sendContactUsForm() {

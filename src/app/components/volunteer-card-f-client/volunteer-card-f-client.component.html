@@ -1,0 +1,51 @@
+<main class="container">
+    <section class="my_account d-flex justify-content-between flex-wrap  mb-4">
+        <article class="me-4">
+          <img
+            [src]="this.imgUrl"
+            alt="Generic placeholder image"
+            class="card-img col"
+          />
+        </article>
+        <section class="col d-flex flex-column justify-content-between gap-1">
+          <h5 class="mb-1">{{this.volunteerName}}</h5>
+          <div>
+            <p class="mb-2 pb-1" style="color: #2b2a2a; font-size: 0.9rem">
+              {{this.volunteerDescription}}
+            </p>
+          </div>
+          <div class="mt-2">
+            <button
+              type="button"
+              class="btn btnShow_id"
+              (click)="volunteerQR()"
+            >
+            Volunteer QR-code
+            </button>
+          </div>
+        </section>
+       <!-- The QR code modal -->
+     
+        <section
+        class="modal-view d-flex flex-column"
+        *ngIf="modalService.isVisible$ | async"
+      >
+        <h5 class="text-qr">Volunteer QR Code:</h5>
+        <qrcode
+        [qrdata]="qrData"
+          [width]="150"
+          [errorCorrectionLevel]="'M'"
+          ></qrcode
+        >
+        <div class="gap-4 mt-4 d-flex justify-content-center">
+          <button
+            type="button"
+            class="btn btn-outline modalBtn px-4"
+            (click)="modalService.done()"
+          >
+            Ok
+          </button>
+        </div>
+      </section>
+      </section>
+    </main>

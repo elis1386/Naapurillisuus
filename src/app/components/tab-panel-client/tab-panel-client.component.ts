@@ -15,6 +15,8 @@ export class TabPanelClientComponent {
       return 2;
     } else if (window.location.pathname === '/client-tasks/done') {
       return 3;
+    } else if (window.location.pathname === '/client-tasks/call') {
+      return 4;
     }
     return 1;
   }

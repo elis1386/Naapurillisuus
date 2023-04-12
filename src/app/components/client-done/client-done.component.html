@@ -1,17 +1,31 @@
 <section class="container">
   <section class="donetasks">
-    <ngb-accordion [closeOthers]="true" activeIds="static-1" class="disabled">
-      <ngb-panel id="static-1" title="Shopping" [disabled]="true">
+    <ngb-accordion #a="ngbAccordion" activeIds="custom-panel-1">
+      <ngb-panel [disabled]="true"
+      *ngFor="let task of doneTasks"
+      >
+        <ng-template ngbPanelHeader let-opened="opened" class="disabled">
+          <button ngbPanelToggle class="accordion-button shopping disabled"
+          [ngClass]="{
+            shopping: task.title == 'Shopping',
+            urgently: task.title == 'Urgently',
+            pets: task.title == 'Pets',
+            other: task.title == 'Others',
+            moving: task.title == 'Moving'
+          }">
+          <span
+          ><b> {{ task.title }}</b> &nbsp;{{
+            task.date | date : "dd/MM/yyyy"
+          }}</span
+        >
+          </button>
+        </ng-template>
         <ng-template ngbPanelContent>
-          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus
-          terry richardson ad squid. 3 wolf moon officia aute, non cupidatat
-          skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
-          Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid
-          single-origin coffee nulla assumenda shoreditch et. Nihil anim
-          keffiyeh helvetica, craft beer labore wes anderson cred nesciunt
-          sapiente ea proident. Ad vegan excepteu r butcher vice lomo. Leggings
-          occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt
-          you probably haven't heard of them accusamus labore sustainable VHS.
+              <article class="task-body">
+                <p>
+                  {{task.description}}
+                </p>
+              </article>
         </ng-template>
       </ngb-panel>
     </ngb-accordion>

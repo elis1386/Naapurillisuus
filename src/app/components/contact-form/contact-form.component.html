@@ -29,22 +29,22 @@
   </div>
   <div class="mb-3">
     <label for="details" class="mb-2">Enter your question, please.</label>
+<!--     <article class="d-flex flex-wrap gap-2 mb-2">
+      <a
+        *ngFor="let text of textTemplate"
+        (click)="showHints(text)"
+        id="text"
+        class="btn btn-hint rounded-pill"
+        >{{ text }}</a
+      >
+    </article> -->
     <app-voice-recognition
       [transcript]="transcript"
       formControlName="details"
+      [(ngModel)]="selectedText"
     ></app-voice-recognition>
     <!-- <textarea rows="6" type="text" class="text-area" formControlName="details">
     </textarea> -->
-    <p
-      *ngIf="
-        this.contactUsForm.get('details')?.invalid &&
-        this.contactUsForm.get('details')?.touched
-      "
-    >
-      <small class="text-danger"
-        >Fill the question please, this is required</small
-      >
-    </p>
   </div>
   <div class="mb-3">
     <label for="email" class="mb-2">Email address</label>
@@ -72,23 +72,22 @@
     Send a message
   </button>
 </form>
+<!-- Modal -->
+<section class="frame" *ngIf="modalService.isVisible$ | async">
+  <article class="modal-view d-flex flex-column">
+    <h5 class="align-self-center fs-4">{{ title }}</h5>
+    <p class="title">
+      We will try our best to solve your problem as soon as possible.
+    </p>
 
-<section
-  class="modal-view d-flex flex-column"
-  *ngIf="modalService.isVisible$ | async"
->
-  <h5 class="align-self-center fs-4">{{ title }}</h5>
-  <p class="title align-self-center fs-6">
-    We will try our best to solve your problem ASAP
-  </p>
-
-  <div class="gap-4 mt-4 d-flex justify-content-center">
-    <button
-      type="button"
-      class="btn btn-outline modalBtn px-4"
-      (click)="modalService.close()"
-    >
-      Ok
-    </button>
-  </div>
+    <div class="gap-4 mt-4 d-flex justify-content-center">
+      <button
+        type="button"
+        class="btn btn-outline modalBtn px-4"
+        (click)="modalService.close()"
+      >
+        Ok
+      </button>
+    </div>
+  </article>
 </section>

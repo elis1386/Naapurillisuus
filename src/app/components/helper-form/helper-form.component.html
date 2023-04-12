@@ -69,7 +69,7 @@
             this.signupForm.get('password')?.touched
           "
         >
-          <small class="text-danger">Password is required</small>
+          <small class="text-danger">Password is required and should include Upper letter and number</small>
         </p>
       </div>
     </div>
@@ -94,12 +94,12 @@
     <div class="col-md-5">
       <label for="country" class="form-label">City</label>
       <select class="form-select" formControlName="city">
-        <option value="">Choose...</option>
-        <option>Helsinki</option>
-        <option>Espoo</option>
-        <option>Vantaa</option>
-        <option>Kuopio</option>
-        <option>Oulu</option>
+        <option value="choose">Choose...</option>
+        <option value="Helsinki">Helsinki</option>
+        <option value="Espoo">Espoo</option>
+        <option value="Vantaa">Vantaa</option>
+        <option value="Kuopio">Kuopio</option>
+        <option value="Oulu">Oulu</option>
       </select>
       <p
         *ngIf="

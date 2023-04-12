@@ -1,82 +1,69 @@
 <section class="container">
-    <section class="client_tasks">
-        <ngb-accordion #acc="ngbAccordion" activeIds="config-panel-one">
-          <ngb-panel title="Help with PC" id="helpPC">
-            <ng-template ngbPanelHeader let-opened="opened">
-              <button ngbPanelToggle class="accordion-button helpPC">
-                Help with PC
-              </button>
-            </ng-template>
-            <ng-template ngbPanelContent>
-              <article class="task-body">
-                <strong>Help with PC<br />Ke, 07.02.2023</strong>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                  sed do eiusmod tempor incididunt ut labore et dolore magna
-                  aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                  ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                </p>
-                <a href="">Edit task</a>
-                <p class="progressbar">
-                  Task progress:
-                  <ngb-progressbar type="success" [value]="25"
-                    >25%</ngb-progressbar
-                  >
-                </p>
-              </article>
-            </ng-template>
-          </ngb-panel>
-          <ngb-panel title="Shopping">
-            <ng-template ngbPanelHeader let-opened="opened">
-              <button ngbPanelToggle class="accordion-button shopping">
-                Shopping
-              </button>
-            </ng-template>
-            <ng-template ngbPanelContent>
-              <article class="task-body">
-                <strong>Shopping<br />La, 03.03.2023</strong>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                  sed do eiusmod tempor incididunt ut labore et dolore magna
-                  aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                  ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                </p>
-                <a href="">Edit task</a>
-                <p class="progressbar">
-                  Task progress:
-                  <ngb-progressbar type="success" [value]="0"
-                    >0%</ngb-progressbar
-                  >
-                </p>
-              </article>
-            </ng-template>
-          </ngb-panel>
-          <ngb-panel title="Shopping">
-            <ng-template ngbPanelHeader let-opened="opened">
-              <button ngbPanelToggle class="accordion-button walkpet">
-                Walk the dog
-              </button>
-            </ng-template>
-            <ng-template ngbPanelContent>
-              <article class="task_body">
-                <strong>Walk the dog<br />Ma, 01.02.2023</strong>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                  sed do eiusmod tempor incididunt ut labore et dolore magna
-                  aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                  ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                </p>
-                <a href="">Edit task</a>
-                <p class="progressbar">
-                  Task progress:
-                  <ngb-progressbar type="success" [value]="50"
-                    >50%</ngb-progressbar
-                  >
-                </p>
-              </article>
-            </ng-template>
-          </ngb-panel>
-        </ngb-accordion>
-      </section>
-</section>
+  <section class="client_tasks">
+    <ngb-accordion
+      #a="ngbAccordion"
+      activeIds="custom-panel-1"
+      *ngFor="let task of myTasks"
+    >
+      <ngb-panel [disabled]="false">
+        <ng-template ngbPanelHeader let-opened="opened" class="disabled">
+          <button
+            ngbPanelToggle
+            class="accordion-button disabled"
+            [ngClass]="{
+              shopping: task.title == 'Shopping',
+              urgently: task.title == 'Urgently',
+              pets: task.title == 'Pets',
+              other: task.title == 'Others',
+              moving: task.title == 'Moving'
+            }"
+          >
+            <span
+              ><b> {{ task.title }}</b> &nbsp;{{
+                task.date | date : "dd/MM/yyyy"
+              }}</span
+            >
+          </button>
+        </ng-template>
 
+        <ng-template ngbPanelContent>
+          <div class="d-flex justify-content-between">
+            <article
+              class="accordion-body"
+              [ngStyle]="{
+                width: task.status.inProgress
+                  ? '100%'
+                  : task.status.active
+                  ? '60%'
+                  : null
+              }"
+            >
+              <strong>{{ task.title }}</strong>
+              <p>
+                {{ task.description }}
+              </p>
+            </article>
+            <div class="delete-btn" *ngIf="task.status.active">
+              <button
+                type="button"
+                class="btn btn-danger opacity-75"
+                (click)="deleteTask(task.id!)"
+              >
+                delete task
+              </button>
+            </div>
+          </div>
+          <article *ngIf="task.status.inProgress">
+            <a class="show" (click)="isVisible = !isVisible"
+              >Show your volunteer</a
+            >
+            <app-volunteer-card-f-client
+              *ngIf="isVisible"
+              [value]="task.volunteerID"
+            ></app-volunteer-card-f-client>
+          </article>
+        </ng-template>
+      </ngb-panel>
+    </ngb-accordion>
+  </section>
+</section>

@@ -1,57 +1,136 @@
 <section class="container">
+  <section class="modal-screen" *ngIf="modalService.isVisible$ | async">
+    <article class="modal-view d-flex flex-column">
+      <h5 class="align-self-center fs-4">{{ currentClient.firstName }}</h5>
+      <p class="title align-self-center align-self-center">
+        Your request is sent. Please, wait for your volunteer to help you!
+      </p>
+
+      <div class="gap-4 mt-4 d-flex justify-content-center">
+        <button
+          type="button"
+          class="btn btn-outline modalBtn px-4"
+          (click)="modalService.done()"
+        >
+          Ok
+        </button>
+      </div>
+    </article>
+  </section>
   <section class="task-form">
     <article class="personalinfo">
-      <p><strong>Your Information</strong></p>
-      <p>
-        Name <br />
-        Surname
+      <p class="title">Your information</p>
+      <p class="info-text mb-2">
+        {{ currentClient.firstName }}
+        {{ currentClient.lastName }}
       </p>
-      <a href="">Edit Information</a>
+      <a href="">edit information</a>
     </article>
+    <hr class="line" />
+    <!-- Address and change address -->
+
     <article class="address">
-      <p><strong>Your Address</strong></p>
-      <p>
-        Zip code <br />
-        City, Street Address
+      <p class="title">Your address</p>
+      <p class="info-text">{{ currentClient.address }},</p>
+      <p class="info-text mb-2">
+        {{ currentClient.city }} {{ currentClient.zip }}
       </p>
-      <a href="">Edit Information</a>
+      <a href="">edit information</a>
     </article>
-    <article class="my-3 helptype">
-      <h6>Type of help I need:</h6>
-      <div class="form-check">
-        <input type="checkbox" class="form-check-input" checked="" />
-        <label class="form-check-label">Do some shopping</label>
-      </div>
-      <div class="form-check">
-        <input type="checkbox" class="form-check-input" required="" />
-        <label class="form-check-label">Walk with my pet</label>
-      </div>
-      <div class="form-check">
-        <input type="checkbox" class="form-check-input" required="" />
-        <label class="form-check-label">Give me a drive</label>
-      </div>
-      <div class="form-check">
-        <input type="checkbox" class="form-check-input" required="" />
-        <label class="form-check-label">Help with PC or other devices</label>
-      </div>
-      <div class="form-check">
-        <input type="checkbox" class="form-check-input" required="" />
-        <label class="form-check-label">Help with moving</label>
-      </div>
-    </article>
-    <section class="comment">
-      <h6>Comments:</h6>
-      <textarea
-        class="form-control"
-        placeholder="Leave your comment here"
-        id="floatingTextarea2"
-        style="height: 100px"
-      ></textarea>
-      <div class="form-checks mt-2">
-        <input type="checkbox" class="form-check-input" required="" />
-        <label class="form-check-label">Emergency</label>
-      </div>
-    </section>
-    <button type="button" class="save_btn">Send my request</button>
+    <hr class="line" />
+    <!-- task form -->
+    <form [formGroup]="addTaskForm" (ngSubmit)="addToClientTask()" class="mt-4">
+      <article class="my-3 helptype col-6">
+        <p><strong>Type of help:</strong></p>
+        <select class="form-select" required="" formControlName="title">
+          <option value="">Choose...</option>
+          <option>Shopping</option>
+          <option>Pets</option>
+          <option>Urgently</option>
+          <option>Others</option>
+          <option>Moving</option>
+        </select>
+        <p
+          *ngIf="
+            this.addTaskForm.get('helpType')?.invalid &&
+            this.addTaskForm.get('helpType')?.touched
+          "
+        >
+          <small class="text-danger"
+            >Choose the problem type, this is required</small
+          >
+        </p>
+      </article>
+
+      <article class="col-6 my-3 helptype">
+        <p><strong>Enter period:</strong></p>
+
+        <select class="form-select" required="" formControlName="period">
+          <option value="">Choose suitable period</option>
+          <option>from 9 to 12</option>
+          <option>from 12 to 15</option>
+          <option>from 15 to 18</option>
+          <option>Other</option>
+        </select>
+        <p
+          *ngIf="
+            this.addTaskForm.get('period')?.invalid &&
+            this.addTaskForm.get('period')?.touched
+          "
+        >
+          <small class="text-danger"
+            >Choose the problem type, this is required</small
+          >
+        </p>
+      </article>
+
+      <section class="comment">
+        <article>
+          <h6>Comments:</h6>
+          <article class="d-flex flex-wrap gap-2 mb-2">
+            <a
+              *ngFor="let text of textTemplate"
+              (click)="showHints(text)"
+              id="text"
+              class="btn btn-hint rounded-pill"
+            >
+              {{ text }}
+            </a>
+          </article>
+          <textarea
+            [(ngModel)]="selectedText"
+            class="form-control"
+            placeholder="Leave your comment here"
+            id="floatingTextarea2"
+            style="height: 100px"
+            formControlName="description"
+          >
+          comments
+        </textarea
+          >
+          <p
+            *ngIf="
+              this.addTaskForm.get('comments')?.invalid &&
+              this.addTaskForm.get('comments')?.touched
+            "
+          >
+            <small class="text-danger"
+              >Choose the problem type, this is required</small
+            >
+          </p>
+        </article>
+
+        <div class="mt-2 form-check">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            checked=""
+            formControlName="isUrgent"
+          />
+          <label class="form-check-label">Emergency</label>
+        </div>
+      </section>
+      <button class="btn save_btn" type="submit">Send my request</button>
+    </form>
   </section>
 </section>
