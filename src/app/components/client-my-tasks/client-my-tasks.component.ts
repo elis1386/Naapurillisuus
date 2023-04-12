@@ -11,13 +11,13 @@ import { ClientDataService } from 'src/app/services/client-data.service';
 export class ClientMyTasksComponent implements OnInit {
   isVisible = false;
   myTasks: CTask[] = [];
-  constructor(public clientDatService: ClientDataService) {}
+  constructor(public clientDataService: ClientDataService) {}
 
   ngOnInit() {
     let clientId = JSON.parse(localStorage.getItem('user')!).uid;
-    this.clientDatService.getAllTasks().subscribe((data) => {
+    this.clientDataService.getAllTasks().subscribe((data) => {
       data.forEach(task => {
-        if(clientId === task.clientId ){
+        if(clientId === task.clientId && !task.status.done){
           this.myTasks.push(task)
         }
       });
@@ -25,7 +25,7 @@ export class ClientMyTasksComponent implements OnInit {
   }
 
 deleteTask(id: string){
-  this.clientDatService.deleteTask(id)
+  this.clientDataService.deleteTask(id)
   this.myTasks = []
   }
 }
