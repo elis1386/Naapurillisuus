@@ -1,4 +1,4 @@
-export interface User{
+export interface User {
   uid?: string;
   firstName: string;
   lastName: string;
@@ -8,7 +8,6 @@ export interface User{
   zip: string;
   about?: string | null;
   role: string;
-  phoneNumber?: string,
+  phoneNumber?: string;
   photoURL?: string | null;
-} 
-
+}

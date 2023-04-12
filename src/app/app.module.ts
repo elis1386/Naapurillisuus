@@ -37,6 +37,8 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { ModalTasksComponent } from './components/modal-tasks/modal-tasks.component';
+import { VoiceRecognitionComponent } from './components/voice-recognition/voice-recognition.component';
+    
 import { VolunteerCardFClientComponent } from './components/volunteer-card-f-client/volunteer-card-f-client.component';
 import { CallRequestComponent } from './components/call-request/call-request.component';
 import { CommonModule } from '@angular/common';
@@ -63,9 +65,11 @@ import { CommonModule } from '@angular/common';
     ClientTaskFormComponent,
     ChatComponent,
     ModalTasksComponent,
+    VoiceRecognitionComponent,
     ClientTaskFormComponent,
     VolunteerCardFClientComponent,
     CallRequestComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -75,8 +79,6 @@ import { CommonModule } from '@angular/common';
     FormsModule,
     ReactiveFormsModule,
     QRCodeModule,
-    
-    
     AngularFireModule.initializeApp(environment.firebase),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),

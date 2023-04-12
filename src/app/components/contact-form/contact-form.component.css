@@ -69,6 +69,7 @@ section::backdrop {
 @media only screen and (max-width: 425px) {
   .modal-view {
     width: 90%;
+    top: 15%;
     left: 1%;
   }
   .btn-hint {

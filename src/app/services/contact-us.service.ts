@@ -25,7 +25,7 @@ export class ContactUsService {
     >;
   }
 
-  sendcontactUsForm(feedback: ContactUs) {
+  sendData(feedback: ContactUs) {
   this.db.collection('feedback').add(feedback)
   }
 }

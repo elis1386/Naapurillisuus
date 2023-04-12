@@ -1,3 +1,4 @@
+
 <section class="container">
   <article
     class="alert alert-secondary alert-dismissible"
@@ -62,4 +63,7 @@
       </ngb-panel>
     </ngb-accordion>
   </section>
+  <app-modal-tasks
+    *ngIf="modalTasksService.isVisible$ | async"
+  ></app-modal-tasks> 
 </section>

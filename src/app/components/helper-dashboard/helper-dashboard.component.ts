@@ -2,12 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { VTask } from 'src/app/models/vtasks';
 import { tasks as data } from 'src/app/data/tasks';
 import { Router } from '@angular/router';
+import { ModalTasksService } from 'src/app/services/modal-tasks.service';
 import {
   AngularFirestore,
 } from '@angular/fire/compat/firestore';
 import { ClientDataService } from 'src/app/services/client-data.service';
 import { CTask } from 'src/app/models/client-tasks';
 import { User } from '@angular/fire/auth';
+import { ModalService } from 'src/app/services/modal.service';
 
 @Component({
   selector: 'app-helper-dashboard',
@@ -25,7 +27,9 @@ export class HelperDashboardComponent implements OnInit {
   currentTask: any;
   volunteerID = JSON.parse(localStorage.getItem('user')!).uid;
 
-  constructor(public clientDataService: ClientDataService, private router: Router) {}
+
+
+  constructor(public clientDataService: ClientDataService, private router: Router, public modalTasksService: ModalService) {}
 
   ngOnInit() {
     this.clientDataService.getAllTasks().subscribe((data) => {
@@ -35,6 +39,7 @@ export class HelperDashboardComponent implements OnInit {
     });
   }
 
+  
   addToMyTasks(id: string | undefined) {
     this.tasks = []
     this.clientDataService.update(id, false, true, false, this.volunteerID);
@@ -45,4 +50,6 @@ export class HelperDashboardComponent implements OnInit {
   closeAlert() {
     this.alert = false;
   }
+
 }
+

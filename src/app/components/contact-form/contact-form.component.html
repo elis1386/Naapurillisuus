@@ -13,7 +13,7 @@
       <option>Can't make an order</option>
       <option>Can't make an order by phone</option>
       <option>Not satisfied with help</option>
-      <option>Рaving problems with a volunteer</option>
+      <option>Having problems with a volunteer</option>
       <option>Other</option>
     </select>
     <p
@@ -29,7 +29,7 @@
   </div>
   <div class="mb-3">
     <label for="details" class="mb-2">Enter your question, please.</label>
-    <article class="d-flex flex-wrap gap-2 mb-2">
+<!--     <article class="d-flex flex-wrap gap-2 mb-2">
       <a
         *ngFor="let text of textTemplate"
         (click)="showHints(text)"
@@ -37,25 +37,14 @@
         class="btn btn-hint rounded-pill"
         >{{ text }}</a
       >
-    </article>
-    <textarea
-      rows="6"
-      type="text"
-      class="text-area"
+    </article> -->
+    <app-voice-recognition
+      [transcript]="transcript"
       formControlName="details"
       [(ngModel)]="selectedText"
-    >
-    </textarea>
-    <p
-      *ngIf="
-        this.contactUsForm.get('details')?.invalid &&
-        this.contactUsForm.get('details')?.touched
-      "
-    >
-      <small class="text-danger"
-        >Fill in the question please, this is required</small
-      >
-    </p>
+    ></app-voice-recognition>
+    <!-- <textarea rows="6" type="text" class="text-area" formControlName="details">
+    </textarea> -->
   </div>
   <div class="mb-3">
     <label for="email" class="mb-2">Email address</label>
@@ -75,7 +64,11 @@
       <small class="text-danger">Email is required</small>
     </p>
   </div>
-  <button class="w-100 btn btn-lg btn-contact mb-3" type="submit">
+  <button
+    class="w-100 btn btn-lg btn-contact mb-3"
+    type="submit"
+    (click)="showData()"
+  >
     Send a message
   </button>
 </form>
