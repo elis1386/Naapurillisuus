@@ -1,23 +1,30 @@
 <section class="container">
   <section class="donetasks">
     <ngb-accordion #a="ngbAccordion" activeIds="custom-panel-1">
-      <ngb-panel [disabled]="true">
+      <ngb-panel [disabled]="true"
+      *ngFor="let task of doneTasks"
+      >
         <ng-template ngbPanelHeader let-opened="opened" class="disabled">
-          <button ngbPanelToggle class="accordion-button shopping disabled">
-            Shopping
+          <button ngbPanelToggle class="accordion-button shopping disabled"
+          [ngClass]="{
+            shopping: task.title == 'Shopping',
+            urgently: task.title == 'Urgently',
+            pets: task.title == 'Pets',
+            other: task.title == 'Others',
+            moving: task.title == 'Moving'
+          }">
+          <span
+          ><b> {{ task.title }}</b> &nbsp;{{
+            task.date | date : "dd/MM/yyyy"
+          }}</span
+        >
           </button>
         </ng-template>
         <ng-template ngbPanelContent>
               <article class="task-body">
-                <strong>Shopping<br />Ke, 07.02.2023</strong>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                  sed do eiusmod tempor incididunt ut labore et dolore magna
-                  aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                  ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                  {{task.description}}
                 </p>
-                <a href="">Edit task</a> <br>
-                <a href=""> <strong>Your volunteer</strong></a>
               </article>
         </ng-template>
       </ngb-panel>

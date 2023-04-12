@@ -15,7 +15,6 @@ export class AuthService {
   userLoggedIn: boolean;
   userData: any;
   user: any;
-  public volunteerID: string;
   canActivateProtectedRoutes$: Observable<boolean> = new Observable(observer => {
     // Your logic to emit boolean values to the observer
     observer.next(true);
@@ -129,8 +128,10 @@ export class AuthService {
 
   routing(){
       if(this.isVolunteer()){
+        localStorage.setItem('url', '/helper-dashboard');
         this.router.navigate(['/helper-dashboard']);
-      }else if(this.isClient() ){
+      }else if(this.isClient()){
+        localStorage.setItem('url', '/client-task-form');
         this.router.navigate(['/client-task-form']);
       }
   }

@@ -50,7 +50,6 @@ export class ClientDataService {
     .catch(err => {
       console.log(err)
     })
-    console.log(id);
   }
 
   async getDataAboutUser(volunteerID: string): Promise<any>{
