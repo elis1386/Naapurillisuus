@@ -11,9 +11,13 @@ import { ClientDataService } from 'src/app/services/client-data.service';
 export class ClientMyTasksComponent implements OnInit {
   isVisible = false;
   myTasks: CTask[] = [];
-  constructor(public clientDataService: ClientDataService) {}
+  constructor(
+    public clientDataService: ClientDataService,
+  ) {}
+
 
   ngOnInit() {
+    this.myTasks = [];
     let clientId = JSON.parse(localStorage.getItem('user')!).uid;
     this.clientDataService.getAllTasks().subscribe((data) => {
       data.forEach(task => {
@@ -21,11 +25,14 @@ export class ClientMyTasksComponent implements OnInit {
           this.myTasks.push(task)
         }
       });
-    })
+    });
   }
 
-deleteTask(id: string){
-  this.clientDataService.deleteTask(id)
-  this.myTasks = []
+  deleteTask(id: string) {
+    let answer = confirm('Do you really want to delete this task?');
+    if (answer === true) {
+      this.clientDataService.deleteTask(id);
+      this.myTasks = [];
+    }
   }
 }

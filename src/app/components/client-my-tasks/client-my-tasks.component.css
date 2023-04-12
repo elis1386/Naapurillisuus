@@ -3,68 +3,59 @@
   padding: 0;
 }
 
-.client_tasks, .donetasks {
-    margin: 2rem;
-    padding: 0;
+.client_tasks,
+.donetasks {
+  margin: 2rem;
+  padding: 0;
 }
-a{
+a {
   text-decoration: none;
   font-size: 1rem;
   color: #4d92f9;
 }
 
-
 .urgently {
-    color: var(--brown);
-    background-color: var(--emergency);
-  }
-  .shopping {
-    color: var(--brown);
-    background-color: var(--shopping);
-  }
-  .pets {
-    color: var(--brown);
-    background-color: var(--pets);
-  }
-  .other {
-    color: var(--brown);
-    background-color: var(--others);
-  }
-  .moving {
-    color: var(--brown);
-    background-color: var(--moving);
-  }
-
-.accordion-button{
-    padding: 1.8rem;
+  color: var(--brown);
+  background-color: var(--emergency);
 }
-.accordion-body{
-  padding: 1rem 0 .5em 0;
+.shopping {
+  color: var(--brown);
+  background-color: var(--shopping);
+}
+.pets {
+  color: var(--brown);
+  background-color: var(--pets);
+}
+.other {
+  color: var(--brown);
+  background-color: var(--others);
+}
+.moving {
+  color: var(--brown);
+  background-color: var(--moving);
+}
+
+.accordion-button {
+  padding: 1.8rem;
+}
+.accordion-body {
+  padding: 1rem 0 0.5em 0;
   width: 60%;
-
 }
-.delete-btn{
+.delete-btn {
   align-self: center;
 }
 
-
-@media only screen and (max-width: 425px) {
-    .client_tasks{
-        margin: 1rem;
-    }
+@media only screen and (max-width: 768px) {
+  .donetasks,
+  .client_tasks {
+    margin: 0.5em;
+  }
 }
 
 @media only screen and (max-width: 425px) {
-    .donetasks,
-    .client_tasks {
-      margin: 0.5em;
-    }
-
+  .donetasks,
+  .client_tasks {
+    margin: 0.5em;
   }
-  @media only screen and (max-width: 320px) {
-    .donetasks,
-    .client_tasks {
-      margin: 0.5em;
-    }
-   
-  }
+}

@@ -5,11 +5,11 @@
       activeIds="custom-panel-1"
       *ngFor="let task of myTasks"
     >
-      <ngb-panel id="custom-panel-1">
-        <ng-template ngbPanelHeader let-opened="opened">
+      <ngb-panel [disabled]="false">
+        <ng-template ngbPanelHeader let-opened="opened" class="disabled">
           <button
             ngbPanelToggle
-            class="accordion-button"
+            class="accordion-button disabled"
             [ngClass]="{
               shopping: task.title == 'Shopping',
               urgently: task.title == 'Urgently',
@@ -28,16 +28,31 @@
 
         <ng-template ngbPanelContent>
           <div class="d-flex justify-content-between">
-          <article class="accordion-body">
-            <strong>{{ task.title }}</strong>
-            <p>
-              {{ task.description }}
-            </p>
-          </article>
-          <div class="delete-btn">
-          <button type="button" class="btn btn-danger opacity-75" (click)="deleteTask(task.id!)">delete task</button>
-        </div>
-        </div>
+            <article
+              class="accordion-body"
+              [ngStyle]="{
+                width: task.status.inProgress
+                  ? '100%'
+                  : task.status.active
+                  ? '60%'
+                  : null
+              }"
+            >
+              <strong>{{ task.title }}</strong>
+              <p>
+                {{ task.description }}
+              </p>
+            </article>
+            <div class="delete-btn" *ngIf="task.status.active">
+              <button
+                type="button"
+                class="btn btn-danger opacity-75"
+                (click)="deleteTask(task.id!)"
+              >
+                delete task
+              </button>
+            </div>
+          </div>
           <article *ngIf="task.status.inProgress">
             <a class="show" (click)="isVisible = !isVisible"
               >Show your volunteer</a
@@ -47,7 +62,6 @@
               [value]="task.volunteerID"
             ></app-volunteer-card-f-client>
           </article>
-         
         </ng-template>
       </ngb-panel>
     </ngb-accordion>

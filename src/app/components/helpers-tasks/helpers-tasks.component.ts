@@ -14,7 +14,10 @@ export class HelpersTasksComponent implements OnInit {
   titleCancel: string = 'Do you really want to cancel this task?';
   currentUserId: any;
 
-  constructor(public modalTasksService: ModalTasksService, public clientDataService: ClientDataService) {}
+  constructor(
+    public modalTasksService: ModalTasksService,
+    public clientDataService: ClientDataService
+  ) {}
   cancel() {
     this.modalTasksService.cancel();
   }
@@ -25,26 +28,30 @@ export class HelpersTasksComponent implements OnInit {
     this.modalTasksService.close();
   }
 
-
   ngOnInit() {
-  this.currentUserId = JSON.parse(localStorage.getItem('user')!).uid;
+    this.tasks = [];
+    this.currentUserId = JSON.parse(localStorage.getItem('user')!).uid;
     this.clientDataService.getAllTasks().subscribe((data) => {
-    this.tasks = []
-      data.forEach(task => {
-        if(task.status.inProgress && task.volunteerID === this.currentUserId){
-          this.tasks.push(task)
+      this.tasks = [];
+      data.forEach((task) => {
+        if (task.status.inProgress && task.volunteerID === this.currentUserId) {
+          this.tasks.push(task);
         }
+      });
     });
-  })
   }
   completedTask(id?: string) {
-    this.modalTasksService.open();
-    console.log('modal should be open');
-    this.clientDataService.update(id, false, false, true)
+    let answer = confirm('Are you sure you have completed this task?');
+    if (answer === true) {
+      this.clientDataService.update(id, false, false, true);
+      this.tasks = [];
+    }
   }
-  canceledTask(id?:string) {
-    this.modalTasksService.open();
-    console.log('modal should be open');
-    this.clientDataService.update(id, true, false)
+  canceledTask(id?: string) {
+    let answer = confirm('Do you really want to cancel this task?');
+    if (answer === true) {
+      this.clientDataService.update(id, true, false);
+      this.tasks = [];
+    }
   }
 }

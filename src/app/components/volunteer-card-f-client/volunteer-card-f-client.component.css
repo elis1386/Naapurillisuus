@@ -45,11 +45,11 @@
   }
 
   .modal-view {
-    width: 80%;
+    width: 30%;
     height: auto;
     position: absolute;
-    top: 25%;
-    left: 10%;
+    top: 20%;
+    left: 33%;
     border-radius: 1rem;
     text-align: center;
     background-color: white;
