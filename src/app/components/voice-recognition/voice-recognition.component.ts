@@ -1,5 +1,10 @@
 import { Component, Input, NgZone } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-voice-recognition',
@@ -15,9 +20,10 @@ export class VoiceRecognitionComponent {
   constructor(public zone: NgZone, private formBuilder: FormBuilder) {}
   ngOnInit() {
     this.form = this.formBuilder.group({
-      details: new FormControl(this.transcript,Validators.required),
+      details: new FormControl(this.transcript, Validators.required),
     });
   }
+
   speachToText() {
     if (this.sr == null) {
       const SpeechRecognition =

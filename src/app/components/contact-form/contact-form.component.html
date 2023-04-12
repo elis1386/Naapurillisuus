@@ -13,7 +13,7 @@
       <option>Can't make an order</option>
       <option>Can't make an order by phone</option>
       <option>Not satisfied with help</option>
-      <option>Рaving problems with a volunteer</option>
+      <option>Having problems with a volunteer</option>
       <option>Other</option>
     </select>
     <p
@@ -29,7 +29,10 @@
   </div>
   <div class="mb-3">
     <label for="details" class="mb-2">Enter your question, please.</label>
-    <app-voice-recognition [transcript]='transcript' formControlName="details"></app-voice-recognition>
+    <app-voice-recognition
+      [transcript]="transcript"
+      formControlName="details"
+    ></app-voice-recognition>
     <!-- <textarea rows="6" type="text" class="text-area" formControlName="details">
     </textarea> -->
     <p
@@ -61,7 +64,11 @@
       <small class="text-danger">Email is required</small>
     </p>
   </div>
-  <button class="w-100 btn btn-lg btn-contact mb-3" type="submit" (click)="showData()">
+  <button
+    class="w-100 btn btn-lg btn-contact mb-3"
+    type="submit"
+    (click)="showData()"
+  >
     Send a message
   </button>
 </form>
