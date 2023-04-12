@@ -25,6 +25,10 @@
   color: var(--brown);
   background-color: var(--others);
 }
+.moving {
+  color: var(--brown);
+  background-color: var(--moving);
+}
 .btn-send {
   font-size: 1rem;
   color: var(--brown);

@@ -52,6 +52,7 @@ export class ClientTaskFormComponent implements OnInit {
       'Take my dog for a walk for ',
       'Do some shopping for me in nearest shop.',
       'Help me with updating my PC',
+      'We r moving next week. Need storng help with it.'
     ];
     this.selectedText = '';
   }
