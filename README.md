@@ -26,19 +26,20 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 # Naapurillisuus
+This project was created a team by 3 during the study in Buseness College of Helsinki.
 
 
-# Работа с git
 
-Пушим все в ветку develop !  /git push /
-Заходим в github  свой кабинет и делаем пул реквест в develop  и мержем его.
+# Working with git
 
-Забираем изменения из ветки develop /git pull origin develop/
+Pash all first to develop !  /git push /
+When want to pull last changes from develop dp: git pull(from develop)
+Then in your github account do- git merge develop  
 
-Затем переходим на нашу ветку разработки. Теперь для синхронизации с веткой develop 
-/git merge develop/
 
-# Firebase deploy
+# Firebase hosting deploy
+in main branch after save all chages, chek does everything working good. Do ng serve.
+If all done  do -
 ng build
 firebase deploy
 
